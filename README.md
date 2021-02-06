@@ -16,6 +16,19 @@ chmod 777 [Webserver docbase]/[압축해제폴더명]/lib/<br>
 
 * 위의 권한변경을 하지 않을 경우 초기 설정이 제대로 처리되지 않을 수 있습니다.<br><br>
 
+* 참고로 제가 테스트한 환경은 Ubuntu 20 + apache2 + php 7.4 환경입니다.<br>
+apt install apache2 php libapache2-mod-php7.4 php7.4-mbstring php7.4-gd php7.4-curl php7.4-xml apache2-dev vnstat php7.4-fpm php7.4-soap php7.4-gmp php7.4-json php7.4-common php7.4-zip php7.4-sqlite3 php7.4-bcmath php7.4-xmlrpc php7.4-bz2 zip unzip net-tools vsftpd python3-pip -y <br><br>
+
+a2enmod rewrite <br>
+a2enmod headers <br>
+a2enmod ssl <br>
+a2dismod -f autoindex <br>
+a2enmod proxy_fcgi setenvif <br>
+a2enconf php7.4-fpm <br>
+systemctl reload apache2 <br><br>
+
+위와 같이 설정한 시스템에서 정상작동중입니다.<br>
+
 * 간혹 최종 웹툰 페이지의 이미지를 못불러오는 경우를 대비해서 해당 페이지 상단에 이미지 로고를 클릭하면 해당 사이트의 웹툰 상세화면으로 바로 이동해서 볼 수 있습니다.<br>
 
 ** 이 소스는 누구든지 퍼가셔서 수정하실 수 있습니다.<br><br>
