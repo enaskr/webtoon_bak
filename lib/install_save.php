@@ -25,6 +25,16 @@
 			$dbcopy = "Y";
 		}
 	}
+	$fileSize = filesize("./webtoon.db");
+	if ( $fileSize < 1000 ) {
+		unlink("./webtoon.db");
+		$dbcopy = "N";
+		if(copy("webtoon_init.db", "webtoon.db")) {
+			$dbcopy = "Y";
+		}
+		$fileSize = filesize("./webtoon.db");
+		if ( $fileSize < 1000 ) {  $dbcopy = "F"; }
+	}
 
 	if(file_exists("../install/install_save.php")) { unlink("../install/install_save.php"); }
 	if(file_exists("../install/install_delete.php")) { unlink("../install/install_delete.php"); }
@@ -63,7 +73,8 @@
 					기본 경로 설정이 완료되었습니다<br><br>
 					웹 경로 : <?php echo $HTTP_PATH; ?><br>
 					서버 경로 : <?php echo $SERVER_PATH; ?><br>
-					<?php if ($dbcopy=="Y") { echo "기본 Database 설정이 완료되었습니다."; } ?><br>
+					<?php if ($dbcopy=="Y") { echo "기본 Database 설정이 완료되었습니다.<br><br>"; } ?>
+					<?php if ($dbcopy=="F") { echo "기본 Database 설정이 실패하였습니다.<br>설치폴더/lib/webtoon_init.db 파일을<br>설치폴더/lib/webtoon.db로 복사해주세요.<br><br>"; } ?>
 					서버의 보안을 위하여 <br>
 					기본설정파일을 삭제하였습니다.<br><br>
 					재설정이 필요한 경우 <br>
