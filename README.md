@@ -4,7 +4,7 @@
 <br><br>
 
 * 설치방법<br>
-1) GIT 에서 바로 설치 : git clone https://github.com/enaskr/webtoon /웹서버docbase(예: /var/www/html)/webtoon<br><br>
+1) GIT 에서 바로 설치 : git    clone    https://github.com/enaskr/webtoon    /웹서버docbase(예: /var/www/html)/webtoon<br><br>
 
 2) Release에서 압축파일을 받아서 설치<br><br>
 Webserver의 docbase 하위에 압축해제해서 넣는다<br><br>
