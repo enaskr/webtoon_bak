@@ -1,8 +1,7 @@
 <?php
 	$cookieMBRID = $_COOKIE["MBRID"];
+	if(file_exists("./lib/pathinfo.php") && file_exists("./lib/webtoon.db")) {
 	include('./lib/dbconn.php');
-	$fileSize = filesize("./lib/pathinfo.php");
-	if ( $fileSize > 40 ) {
 ?><!DOCTYPE html>
 <html lang='ko'>
 <head>
@@ -122,8 +121,8 @@
 					잘못되어있습니다.<br><br>
 					아래에서 설정해주세요.<br>
 				</div>
-				<div class='group' style='padding:0px;font-size:20px;line-height:50px;'>
-					<a href="install.php">install.php</a>
+				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
+					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='기본환경 설정하기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="./install.php";'></td></tr></table>
 				</div>
 			</dd>
 		</dl>
