@@ -15,9 +15,6 @@ if($_GET['keyword'] != null){
 <?php
 
 	$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",$_GET['keyword'],$searchParam);
-	if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-		$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-	}
 	echo "<script type='text/javascript'>console.log('$url');</script>";
 	$get_html_contents = file_get_html($url);
 	for($html_c = 0; $html_c < (int)$config["try_count"]; $html_c++){
@@ -83,9 +80,6 @@ if($_GET['keyword'] != null){
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
 		$url = $siteUrl.$recentUrl."?".$recentParam;
-		if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-			$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-		}
 		echo "<script type='text/javascript'>console.log('$url');</script>";
 
 		$get_html_contents = file_get_html($url);
@@ -151,9 +145,6 @@ if($_GET['keyword'] != null){
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
 		$url = $siteUrl.$endedUrl."?".$endedParam;
-		if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-			$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-		}
 		echo "<script type='text/javascript'>console.log('$url');</script>";
 		$get_html_contents = file_get_html($url);
 		for($html_c = 0; $html_c < (int)$config["try_count"]; $html_c++){

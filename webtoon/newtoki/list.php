@@ -3,9 +3,6 @@
 ?>
 <?php
 $url = $siteUrl.$listUrl."?".str_replace("{toonid}",$_GET["wr_id"],$listParam);
-if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-	$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-}
 echo "<script type='text/javascript'>console.log('$url');</script>";
 $ch = curl_init(); //curl 로딩
 curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅

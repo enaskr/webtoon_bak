@@ -13,9 +13,6 @@
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
 		$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",$_GET['keyword'],$searchParam);
-		if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-			$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-		}
 		echo "<script type='text/javascript'>console.log('$url');</script>";
 
 		$ch = curl_init(); //curl 로딩
@@ -100,50 +97,15 @@
 <?php
 			for($p = 1; $p <= 1; $p++) {
 				$url = $siteUrl.str_replace("{page}",$p,$recentUrl)."?".$recentParam;
-				if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-					$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-				}
 				echo "<script type='text/javascript'>console.log('$url');</script>";
 				$ch = curl_init(); //curl 로딩
 				curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-				curl_setopt($ch, CURLOPT_HEADER, 1);
-				curl_setopt($ch, CURLOPT_TIMEOUT,50);
+				curl_setopt($ch, CURLOPT_TIMEOUT,3000);
 				$result = curl_exec($ch); // curl 실행 및 결과값 저장
-				$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-				$header = substr($result, 0, $header_size);
-				$headerArr = explode("\n",$header);
-				foreach( $headerArr as $headerStr ) {
-					if ( startsWith($headerStr,"set-cookie: __cfduid=") > 0 ) {
-						$cfString = $headerStr;
-						$cf_cookie = substr($cfString,12);
-						break;
-					}
-				}
 				curl_close ($ch); // curl 종료
-/*
-				if ($result !== '') {
-					echo "OK Result=".strlen($result);
-					echo "Result=".$result;
-					$split_result = split("\r\n\r\n", $result, 2);
-					$header = $split_result[0];
-					echo "OK Header=".strlen($header);
-					$header_arr = get_http_header_as_array($header);
-					print_r($header_arr);
-				}
-*/
-				$result = substr($result, 0, 100000);
 				$get_html_contents = str_get_html($result);
-/*
-				$get_html_contents = file_get_html($url);
-				for($html_c = 0; $html_c < (int)$config["try_count"]; $html_c++){
-					if(strlen($get_html_contents) > 50000){
-						break;
-					} else {
-						$get_html_contents = file_get_html($url);
-					}
-				}
-*/
+
 				if ( $get_html_contents == null || strlen($get_html_contents) < 10000 ) {
 					Header("Location:./update.php"); 
 				}
@@ -218,9 +180,6 @@
 <?php
 			for($p = 1; $p <= 4; $p++) {
 				$url = $siteUrl.str_replace("{page}",$p,$endedUrl)."?".$endedParam;
-				if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-					$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-				}
 				echo "<script type='text/javascript'>console.log('$url');</script>";
 				$ch = curl_init(); //curl 로딩
 				curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅

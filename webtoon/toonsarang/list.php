@@ -3,9 +3,6 @@
 ?>
 <?php
 $url = $siteUrl.str_replace("{toonid}",$_GET["wr_id"],$listUrl);
-if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-	$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-}
 echo "<script type='text/javascript'>console.log('$url');</script>";
 $get_html_contents = file_get_html($url);
 for($html_c = 0; $html_c < $try_count; $html_c++){

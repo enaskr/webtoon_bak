@@ -15,9 +15,6 @@ if($_GET['keyword'] != null){
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
 	$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",urlencode($_GET['keyword']),$searchParam);
-	if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-		$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-	}
 	echo "<script type='text/javascript'>console.log('$url');</script>";
 
 	$ch = curl_init(); //curl 로딩
@@ -87,9 +84,6 @@ if($_GET['keyword'] != null){
 <?php
 
 		$url = $siteUrl.$recentUrl."?".$recentParam;
-		if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-			$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-		}
 		echo "<script type='text/javascript'>console.log('$url');</script>";
 
 		$ch = curl_init(); //curl 로딩
@@ -161,9 +155,6 @@ if($_GET['keyword'] != null){
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
 		$url = $siteUrl.$endedUrl."?".str_replace("{page}",$page,$endedParam);
-		if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
-			$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
-		}
 		echo "<script type='text/javascript'>console.log('$url');</script>";
 
 		$ch = curl_init(); //curl 로딩
