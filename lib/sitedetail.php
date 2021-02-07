@@ -26,7 +26,7 @@
 <?php
 	if ( $USER_LEVEL == 99999 ) {
 		$toonsiteList = "SELECT SITE_ID, SITE_NAME, SITE_ALIAS, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ";
-		$toonsiteList = $toonsiteList."ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, USE_YN, NOTE, MAIN_VIEW, ORDER_NUM, UPDATE_YN, REGDTIME, UPTDTIME ";
+		$toonsiteList = $toonsiteList."ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, USE_YN, NOTE, MAIN_VIEW, ORDER_NUM, UPDATE_YN, UPDATE_EXECUTE, REGDTIME, UPTDTIME ";
 		$toonsiteList = $toonsiteList."FROM SITE_INFO WHERE SITE_ID='".$_GET["siteid"]."' LIMIT 1; ";
 		$webtoonView = $webtoonDB->query($toonsiteList);
 		while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
@@ -52,6 +52,7 @@
 			$dbmainview = $row["MAIN_VIEW"];
 			$dbordernum = $row["ORDER_NUM"];
 			$dbupdateyn = $row["UPDATE_YN"];
+			$dbupdateexecute = $row["UPDATE_EXECUTE"];
 			$dbregdtime = $row["REGDTIME"];
 			$dbuptdtime = $row["UPTDTIME"];
 
@@ -83,6 +84,13 @@
 			} else {
 				$strupdateynY = "";
 				$strupdateynN = "selected";
+			}
+			if ( $dbupdateexecute != null && $dbupdateexecute == "Y" ) {
+				$strupdateexecuteY = "selected";
+				$strupdateexecuteN = "";
+			} else {
+				$strupdateexecuteY = "";
+				$strupdateexecuteN = "selected";
 			}
 			echo "<tr style='height:30px;'>\n";
 			echo "<td align='center' style='width:35%;font-size:15px;font-weight:bold;color:#000000;' rowspan='2'>SITE_ID</td>";
@@ -135,6 +143,11 @@
 			echo "<tr style='height:30px;'>\n";
 			echo "<td align='center' style='font-size:15px;font-weight:bold;color:#000000;'>업데이트 성공여부</td>";
 			echo "<td align='center' style=';font-size:15px;font-weight:bold;color:#000000;text-align-last:center;'><select name='UPDATE_YN' style='border:none; font-size:20px; line-height:30px; width:100%;font-weight:bold;text-align:center;background-color: #f8f8f8;'><option value='N' ".$strupdateynN.">실패</option><option value='Y' ".$strupdateynY.">성공</option></select></td>\n";
+			echo "</tr>\n";
+
+			echo "<tr style='height:30px;'>\n";
+			echo "<td align='center' style='font-size:15px;font-weight:bold;color:#000000;'>업데이트 실행여부</td>";
+			echo "<td align='center' style=';font-size:15px;font-weight:bold;color:#000000;text-align-last:center;'><select name='UPDATE_EXECUTE' style='border:none; font-size:20px; line-height:30px; width:100%;font-weight:bold;text-align:center;background-color: #f8f8f8;'><option value='N' ".$strupdateynN.">실패</option><option value='Y' ".$strupdateynY.">성공</option></select></td>\n";
 			echo "</tr>\n";
 
 			echo "<tr style='height:30px;'>\n";

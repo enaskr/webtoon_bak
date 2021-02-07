@@ -1,5 +1,6 @@
 #!/bin/bash
 
-cd /share/app/webtoon/lib
-/usr/bin/php update.php > webtoonurl_update.log
+FILEPATH="/share/webtoon/lib/";
+
+/usr/bin/php ${FILEPATH}update.php > ${FILEPATH}webtoonurl_update.log
 

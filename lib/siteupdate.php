@@ -24,7 +24,7 @@
 				$userList = $userList." RECENT_PARAM='".$_POST["RECENT_PARAM"]."', ENDED_URL='".$_POST["ENDED_URL"]."', ENDED_PARAM='".$_POST["ENDED_PARAM"]."',  ";
 				$userList = $userList." LIST_URL='".$_POST["LIST_URL"]."', LIST_PARAM='".$_POST["LIST_PARAM"]."', VIEW_URL='".$_POST["VIEW_URL"]."',  ";
 				$userList = $userList." VIEW_PARAM='".$_POST["VIEW_PARAM"]."', USE_YN='Y', NOTE='".$_POST["NOTE"]."', MAIN_VIEW='".$_POST["MAIN_VIEW"]."', ";
-				$userList = $userList." ORDER_NUM='".$_POST["ORDER_NUM"]."', UPDATE_YN='".$_POST["UPDATE_YN"]."', UPTDTIME='".date("Y.m.d H:i:s", time())."' ";
+				$userList = $userList." ORDER_NUM='".$_POST["ORDER_NUM"]."', UPDATE_YN='".$_POST["UPDATE_YN"]."', UPDATE_EXECUTE='".$_POST["UPDATE_EXECUTE"]."', UPTDTIME='".date("Y.m.d H:i:s", time())."' ";
 				$userList = $userList." WHERE SITE_ID = '".$_POST["SITE_ID"]."' ; ";
 				//echo "SQL=".$userList;
 				$query = $webtoonDB->exec($userList);

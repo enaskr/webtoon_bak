@@ -40,6 +40,7 @@
 			MAIN_VIEW, -- 메인페이지 노출여부
 			ORDER_NUM, -- 메인페이지 노출 순서
 			UPDATE_YN, -- 주소 업데이트 성공여부
+			UPDATE_EXECUTE, -- 주소업데이트 실행여부
 			REGDTIME TEXT, -- 등록일시
 			UPTDTIME TEXT, -- 수정일시
 			USE_YN TEXT  -- 사용여부(Y/N)
@@ -63,6 +64,8 @@
 		INSERT INTO SITE_INFO VALUES('WABOGO','와보고','WABOGO','https://wabogo.net','manga','wabogo','100000','/search','skeyword={keyword}','/comic','','/comic','publish=완결','/webtoon/lists/{toonid}','','/webtoon/view/{toondtlid}','','','N',99999,'Y','2020.11.09 00:00:00','2020.12.21 19:03:40','Y');
 		INSERT INTO SITE_INFO VALUES('19ALLNET','19올넷','19ALLNET','https://www.allall43.net','manga','19allnet','1','/search','skeyword={keyword}','/cartoonpublish','','/cartooncompletion','','/cartoonpublish/weblist/{toonid}/page/{page}','','/cartoonpublish/view/{toonid}/{toondtlid}','','https://linkzip.site/board_SnzU08/658','N',99999,'Y','2020.11.09 00:00:00','2021.02.06 15:59:05','Y');
 		INSERT INTO SITE_INFO VALUES('19ALLNETW','19올넷','19ALLNETW','https://www.allall43.net','webtoon','19allnetw','1','/search','skeyword={keyword}','/publish','','/completion','','/publish/weblist/{toonid}/page/{page}','','/publish/view/{toonid}/{toondtlid}','','https://linkzip.site/board_SnzU08/658','N','99999','Y','2020.11.09 00:00:00','2021.02.06 15:59:05','Y');
+
+		ALTER TABLE SITE_INFO ADD COLUMN UPDATE_EXECUTE;
 
 
 
