@@ -40,7 +40,10 @@ do {
 			if($e->style != null){
 				$thumb = $e->style;
 				$thumb = str_replace("background:url('","",$thumb);
-				$thumb = str_replace("') no-repeat center center; background-size:cover;","",$thumb);
+				$thumb = str_replace("no-repeat center center; background-size:cover;","",$thumb);
+				$thumb = str_replace("url('/web_cdn/img/mana/no-img.jpg')","",$thumb);
+				$thumb = str_replace("'),","",$thumb);
+				$thumb = trim($thumb);
 				setcookie("THUMB", $thumb, time()+60, "/");
 				break;
 			} 
