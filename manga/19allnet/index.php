@@ -38,7 +38,7 @@
 				foreach($f->find('a') as $g){
 					$epilink = $g->href;
 					$toonstr = explode("/",$epilink);
-					$wr_id = $toonstr[3];
+					$wr_id = $toonstr[5];
 				}
 				foreach($f->find('strong.title') as $g){
 					$title = trim(strip_tags($g));
@@ -103,7 +103,7 @@
 					foreach($f->find('a') as $g){
 						$epilink = $g->href;
 						$toonstr = explode("/",$epilink);
-						$wr_id = $toonstr[3];
+						$wr_id = $toonstr[5];
 					}
 					foreach($f->find('strong.title') as $g){
 						$title = trim(strip_tags($g));
@@ -167,7 +167,7 @@
 					foreach($f->find('a') as $g){
 						$epilink = $g->href;
 						$toonstr = explode("/",$epilink);
-						$wr_id = $toonstr[3];
+						$wr_id = $toonstr[5];
 					}
 					foreach($f->find('strong.title') as $g){
 						$title = trim(strip_tags($g));
