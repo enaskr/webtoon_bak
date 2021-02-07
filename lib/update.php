@@ -127,43 +127,6 @@
 		echo "19ALLNETW FAIL!\n";
 	}
 
-	// 일일툰 (11TOON)
-	$newurl = "";
-	$url = "http://11toon1.com/";
-	$ch = curl_init(); //curl 로딩
-	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-	curl_setopt($ch, CURLOPT_TIMEOUT,3000);
-	$result = curl_exec($ch); // curl 실행 및 결과값 저장
-	curl_close ($ch); // curl 종료
-	$get_html_contents = str_get_html($result);
-
-	if ( strlen($get_html_contents) > 0 ) {
-		$idx = 0;
-		foreach($get_html_contents->find('li') as $e) {
-			if ( $idx == 2 ) {
-				$f = str_get_html($e->innertext);
-				foreach($f->find('a') as $g) {
-					$newurl = $g->href;
-					break;
-				}
-			}
-			$idx++;
-		}
-	}
-
-	if ( strlen($newurl) > 10 ) {
-		if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
-		$IDN = new idna_convert();
-		$newurl = $IDN->encode($newurl);
-		$newsql = "UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='Y' WHERE SITE_ID = '11TOON'; ";
-		$webtoonDB->exec($newsql);
-		echo "11TOON => ".$newurl."\n";
-	} else {
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = '11TOON';");
-		echo "11TOON FAIL!\n";
-	}
-
 	// SEQUENCIAL : 뉴토끼(NEWTOKI), 프로툰(PROTOON), 스포위키(SPOWIKI), 마나팡(MANAPANG), 마나토끼(MANATOKI), 샤크툰(SHARKTOON)
 	$siteID = array();
 	$siteUrl = array();
