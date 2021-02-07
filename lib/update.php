@@ -59,50 +59,6 @@
 		echo "TOONSARANG FAIL!\n";
 	}
 
-	// 툰코 (TOONKOR)
-	//$target = "https://linktong1.com/bbs/board.php?bo_table=webtoon&wr_id=10";
-	$newurl = "";
-	$target = "https://linkzip.site/board_SnzU08/634";
-	$get_html_contents = file_get_html($target);
-	for($html_c = 0; $html_c < $try_count; $html_c++){
-		if(strlen($get_html_contents) > 10000){
-			break;
-		} else {
-			$get_html_contents = "";
-			$get_html_contents = file_get_html($target);
-		}
-	}
-/*
-	if ( strlen($get_html_contents) > 0 ) {
-		$strpos = explode('<table border="1" style="width:100%;">',$get_html_contents);
-		$strpos2 = explode('</table>',$strpos[1]);
-		$newstr = $strpos2[0];
-		$newtokistr = str_get_html($newstr);
-		foreach($newtokistr->find('a') as $e){
-			$newurl = $e->href;
-			break;
-		}
-	}
-*/
-	if ( strlen($get_html_contents) > 0 ) {
-		foreach($get_html_contents->find('div.document_634_452') as $e){
-			$f = str_get_html($e->innertext);
-			foreach($f->find('u') as $g){
-				$newurl = $g->innertext;
-				break;
-			}
-		}
-	}
-
-	if ( strlen($newurl) > 10 ) {
-		if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='Y' WHERE SITE_ID = 'TOONKOR';");
-		echo "TOONKOR => ".$newurl."\n";
-	} else {
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = 'TOONKOR';");
-		echo "TOONKOR FAIL!\n";
-	}
-
 	// 펀비 (FUNBE)
 	//$target = "https://linktong1.com/bbs/board.php?bo_table=webtoon&wr_id=38";
 	$newurl = "";
@@ -116,18 +72,7 @@
 			$get_html_contents = file_get_html($target);
 		}
 	}
-/*
-	if ( strlen($get_html_contents) > 0 ) {
-		$strpos = explode('<table border="1" style="width:100%;">',$get_html_contents);
-		$strpos2 = explode('</table>',$strpos[1]);
-		$newstr = $strpos2[0];
-		$newtokistr = str_get_html($newstr);
-		foreach($newtokistr->find('a') as $e){
-			$newurl = $e->href;
-			break;
-		}
-	}
-*/
+
 	if ( strlen($get_html_contents) > 0 ) {
 		foreach($get_html_contents->find('div.document_2906_452') as $e){
 			$f = str_get_html($e->innertext);
@@ -159,18 +104,7 @@
 			$get_html_contents = file_get_html($target);
 		}
 	}
-/*
-	if ( strlen($get_html_contents) > 0 ) {
-		$strpos = explode('<table border="1" style="width:100%;">',$get_html_contents);
-		$strpos2 = explode('</table>',$strpos[1]);
-		$newstr = $strpos2[0];
-		$newtokistr = str_get_html($newstr);
-		foreach($newtokistr->find('a') as $e){
-			$newurl = $e->href;
-			break;
-		}
-	}
-*/
+
 	if ( strlen($get_html_contents) > 0 ) {
 		foreach($get_html_contents->find('div.document_658_452') as $e){
 			$f = str_get_html($e->innertext);
@@ -192,37 +126,7 @@
 		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = '19ALLNETW';");
 		echo "19ALLNETW FAIL!\n";
 	}
-/*
-	// 샤크툰 (SHARKTOON)
-	$newurl = "";
-	$target = "https://linktong1.com/bbs/board.php?bo_table=webtoon&wr_id=50";
-	$get_html_contents = file_get_html($target);
-	for($html_c = 0; $html_c < $try_count; $html_c++){
-		if(strlen($get_html_contents) > 10000){
-			break;
-		} else {
-			$get_html_contents = "";
-			$get_html_contents = file_get_html($target);
-		}
-	}
 
-	if ( strlen($get_html_contents) > 0 ) {
-		$strpos = explode('<table border="1" style="width:100%;">',$get_html_contents);
-		$strpos2 = explode('</table>',$strpos[1]);
-		$newstr = $strpos2[0];
-		$newtokistr = str_get_html($newstr);
-		foreach($newtokistr->find('a') as $e){
-			$newurl = $e->href;
-			break;
-		}
-	}
-
-	if ( strlen($newurl) > 10 ) {
-		if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."' WHERE SITE_ID = 'SHARKTOON';");
-		echo "SHARKTOON => ".$newurl."\n";
-	}
-*/
 	// 일일툰 (11TOON)
 	$newurl = "";
 	$url = "http://11toon1.com/";
@@ -260,48 +164,15 @@
 		echo "11TOON FAIL!\n";
 	}
 
-	// SEQUENCIAL : 마니코믹스웹툰(MANYW), 뉴토끼(NEWTOKI), 프로툰(PROTOON), 스포위키(SPOWIKI), 마나팡(MANAPANG), 마나토끼(MANATOKI), 마니코믹스(MANY), 샤크툰(SHARKTOON)
+	// SEQUENCIAL : 뉴토끼(NEWTOKI), 프로툰(PROTOON), 스포위키(SPOWIKI), 마나팡(MANAPANG), 마나토끼(MANATOKI), 샤크툰(SHARKTOON)
 	$siteID = array();
 	$siteUrl = array();
-	$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, CF_REDIRECT, CF_COOKIE, CF_USERAGENT FROM SITE_INFO WHERE USE_YN='Y'";
+	$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM FROM SITE_INFO WHERE USE_YN='Y'";
 	$conf_result = $webtoonDB->query($sql);
 	while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 		$siteID[$conf["SITE_ID"]] = $conf["SITE_ID"];
 		$siteUrl[$conf["SITE_ID"]] = $conf["SITE_URL"];
 		if ( endsWith($siteUrl[$conf["SITE_ID"]], "/") == true ) $siteUrl[$conf["SITE_ID"]] = substr($siteUrl[$conf["SITE_ID"]], 0, strlen($siteUrl[$conf["SITE_ID"]])-1);
-	}
-
-	// 마니코믹스웹툰(MANYW) / 마니코믹스(MANY)
-	$newurl = "";
-	$urlstr = str_replace("https://many","",$siteUrl["MANY"]);
-	$urlstr = str_replace(".com","",$urlstr);
-	$urlstr = str_replace("/","",$urlstr);
-	$urlnum = (int)$urlstr;
-	for($i=$urlnum;$i < $urlnum+$search_seq;$i++){
-		$base_url = "https://many".$i.".com/";
-		$get_html_contents = file_get_html($base_url);
-		if ( strlen($get_html_contents) > 0 ) {
-			foreach($get_html_contents->find('meta') as $e){
-				if($e->property == "og:url"){
-					$newurl = $base_url;
-					break;
-				}
-			}
-			break;
-		}
-	}
-
-	if ( strlen($newurl) > 10 ) {
-		if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='Y' WHERE SITE_ID = 'MANY';");
-		echo "MANY => ".$newurl."\n";
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='Y' WHERE SITE_ID = 'MANYW';");
-		echo "MANYW => ".$newurl."\n";
-	} else {
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = 'MANY';");
-		echo "MANY FAIL!\n";
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = 'MANYW';");
-		echo "MANYW FAIL!\n";
 	}
 
 	// 뉴토끼(NEWTOKI), 마나토끼(MANATOKI)
@@ -310,19 +181,14 @@
 	$urlstr = str_replace(".com","",$urlstr);
 	$urlstr = str_replace("/","",$urlstr);
 	$urlnum = (int)$urlstr;
-	echo "NEWTOKI ::: urlnum = ".$urlnum."\n";
 	for($i=$urlnum;$i < $urlnum+$search_seq;$i++){
 		$base_url = "https://newtoki".$i.".com";
 		$base_url2 = "https://manatoki".$i.".net";
 		$get_html_contents = file_get_html($base_url);
 		if ( strlen($get_html_contents) > 0 ) {
-	echo "NEWTOKI ::: i = ".$i."\n";
 			foreach($get_html_contents->find('meta') as $e){
-	echo "NEWTOKI ::: meta ok"."\n";
 				if($e->property == "og:url"){
-	echo "NEWTOKI ::: og:url ok"."\n";
 					$newurl = $base_url;
-	echo "NEWTOKI ::: newurl = ".$newurl."\n";
 					break;
 				}
 			}
@@ -371,36 +237,6 @@
 	} else {
 		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = 'PROTOON';");
 		echo "PROTOON FAIL!\n";
-	}
-
-
-	// 스포위키(SPOWIKI)
-	$newurl = "";
-	$urlstr = str_replace("https://spowiki","",$siteUrl["SPOWIKI"]);
-	$urlstr = str_replace(".com","",$urlstr);
-	$urlstr = str_replace("/","",$urlstr);
-	$urlnum = (int)$urlstr;
-	for($i=$urlnum;$i < $urlnum+$search_seq;$i++){
-		$base_url = "https://spowiki".$i.".com/";
-		$get_html_contents = file_get_html($base_url);
-		if ( strlen($get_html_contents) > 0 ) {
-			foreach($get_html_contents->find('meta') as $e){
-				if($e->property == "og:url"){
-					$newurl = $base_url;
-					break;
-				}
-			}
-			break;
-		}
-	}
-
-	if ( strlen($newurl) > 19 ) {
-		if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='Y' WHERE SITE_ID = 'SPOWIKI';");
-		echo "SPOWIKI => ".$newurl."\n";
-	} else {
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = 'SPOWIKI';");
-		echo "SPOWIKI FAIL!\n";
 	}
 
 	// 마나팡(MANAPANG)
