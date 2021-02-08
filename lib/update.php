@@ -9,7 +9,7 @@
 
 	echo "TOON URL Update Start : ".date("Y.m.d H:i:s", time())."\n";
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'COPYTOON'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'COPYTOON'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -48,7 +48,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'TOONSARANG'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'TOONSARANG'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -75,7 +75,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'FUNBE'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'FUNBE'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -115,7 +115,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = '19ALLNET'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = '19ALLNET'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -159,7 +159,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'NEWTOKI'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'NEWTOKI'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -213,7 +213,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'PROTOON'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'PROTOON'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -250,7 +250,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'MANAPANG'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'MANAPANG'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
@@ -287,7 +287,7 @@
 		}
 	}
 
-	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'N') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'SHARKTOON'; ";
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'SHARKTOON'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 		$dbsiteid = $row["SITE_ID"];
