@@ -1,6 +1,9 @@
 <?php
-	unset($_COOKIE["MBRID"]);
-	setcookie("MBRID", $_COOKIE["MBRID"], time()-60, "/");
+	$cookieMBRID = ''; 
+	if (isset($_COOKIE['MBRID']) ) { 
+		setcookie("MBRID", $_COOKIE["MBRID"], time()-60, "/");
+		unset($_COOKIE["MBRID"]);
+	} 
 ?>
 <!DOCTYPE html>
 <html lang='ko'>
@@ -17,7 +20,7 @@
 <body>
 <script type="text/javascript">
 	alert("로그아웃 되었습니다.");
-	location.href="../";
+	location.href="../index.php";
 </script>
 </body>
 </html>

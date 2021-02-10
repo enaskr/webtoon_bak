@@ -168,8 +168,8 @@
 <table style="border-color:#ffffff;" border=0 width="100%" cellspacing=0 cellpadding=0>
 	<tr style='background-color:#f8f8f8'>
 		<td style='width:34%;height:30px;font-size:16px;color:#8000ff;' align=center valign=middle><a href="./myview.php" <?php if ( ($lastpath2 == "webtoon" || $lastpath2 == "manga") && $filepath=="myview.php" ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>내가 본 목록</a></td>
-		<td style='width:33%;font-size:16px;color:#8000ff;' align=center valign=middle><a href="./index.php" <?php if ( ($lastpath2 == "webtoon" || $lastpath2 == "manga") && $filepath=="index.php" && $_GET["end"]!="END" && $_GET["keyword"] == null ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>최신업데이트</a></td>
-		<td style='width:33%;font-size:16px;color:#8000ff;' align=center valign=middle><a href="./index.php?end=END" <?php if ( ($lastpath2 == "webtoon" || $lastpath2 == "manga") && $filepath=="index.php" && $_GET["end"]=="END" && $_GET["keyword"] == null) { ?>style='font-weight:bold;color:blue;'<?php } ?>>완결작</a></td>
+		<td style='width:33%;font-size:16px;color:#8000ff;' align=center valign=middle><a href="./index.php" <?php if ( ($lastpath2 == "webtoon" || $lastpath2 == "manga") && $filepath=="index.php" && $end!="END" && $keywordstr == null ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>최신업데이트</a></td>
+		<td style='width:33%;font-size:16px;color:#8000ff;' align=center valign=middle><a href="./index.php?end=END" <?php if ( ($lastpath2 == "webtoon" || $lastpath2 == "manga") && $filepath=="index.php" && $end=="END" && $keywordstr == null) { ?>style='font-weight:bold;color:blue;'<?php } ?>>완결작</a></td>
 	</tr>
 </table>
 <?php } ?>

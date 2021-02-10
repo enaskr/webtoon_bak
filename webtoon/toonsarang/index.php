@@ -9,7 +9,7 @@
 //https://copytoon112.com/img/logo.png
 if($keywordstr != null){
 ?>
-			<dt><?php echo $siteName; ?> 검색결과:<?php echo $_GET["keyword"]; ?></dt>
+			<dt><?php echo $siteName; ?> 검색결과:<?php echo $keywordstr; ?></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
@@ -70,7 +70,7 @@ if($keywordstr != null){
 		echo "</tr>\n";
 	}
 } else {
-	if ( $ends != "END" ) {
+	if ( $end != "END" ) {
 ?>
 			<dt><?php echo $siteName; ?> 연재목록</dt>
 			<dd>

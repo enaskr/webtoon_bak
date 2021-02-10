@@ -1,18 +1,17 @@
 <?php
-	include('../lib/simple_html_dom.php');
-
+	include('./simple_html_dom.php');
 	$userid = $_POST["user"];
 	$userpw = $_POST["pass"];
-	$webtoonDB = new SQLite3('../lib/webtoon.db');
+	$webtoonDB = new SQLite3('./webtoon.db');
 	if($webtoonDB->lastErrorCode() == 0){
 		if ( $userid !=null && strlen($userid) > 3 && $userpw !=null && strlen($userpw) > 3 ) {
 			$userpassword = strtoupper(hash("sha256", $userpw));
 			$result = $webtoonDB->query("SELECT MBR_NO, USER_ID, LOGIN_COUNT, USER_NAME, EMAIL, PHONE, REGDTIME FROM USER_INFO WHERE USER_ID = '".$userid."' AND USER_PASSWD = '".$userpassword."' AND USER_STATUS IN ('OK','APPROVED') AND USE_YN='Y' LIMIT 1;");
-			while($row = $result->fetchArray(SQLITE3_ASSOC)){         
+			while($row = $result->fetchArray(SQLITE3_ASSOC)){
 				$userMbrno = $row["MBR_NO"];
 				$loginCount = (int)$row["LOGIN_COUNT"];
 
-				$userList = "UPDATE USER_INFO SET LAST_LOGIN_DTIME='".date("Y.m.d H:i:s", time())."', LOGIN_COUNT = '".($loginCount+1)."', LOGIN_FAIL_COUNT = '0' LAST_LOGIN_IPADDRESS = '".getRealClientIp()."' WHERE MBR_NO = '".$userMbrno."'; ";
+				$userList = "UPDATE USER_INFO SET LAST_LOGIN_DTIME='".date("Y.m.d H:i:s", time())."', LOGIN_COUNT = '".($loginCount+1)."', LOGIN_FAIL_COUNT = '0', LAST_LOGIN_IPADDRESS = '".getRealClientIp()."' WHERE MBR_NO = '".$userMbrno."'; ";
 				$cnt = $webtoonDB->exec($userList);
 
 				define('KEY', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
@@ -20,7 +19,7 @@
 				define('KEY_256', substr(KEY,0,256/8));
 				$mbrid = openssl_encrypt($userMbrno."|".date("Ymd", time())."|".$userpassword, 'AES-256-CBC', KEY_256, 0, KEY_128);
 				setcookie("MBRID", $mbrid, time()+3600, "/");
-				Header("Location:../"); 
+				Header("Location:../index.php"); 
 			}
 			if ( $userMbrno==null || strlen($userMbrno) == 0) {
 ?>
