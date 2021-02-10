@@ -8,7 +8,22 @@
 	$dbcopy = "N";
 	if(file_exists("webtoon.db")) {
 		unlink("webtoon.db");
-		$dbcopy = "Y";
+	}
+
+	if(!file_exists("webtoon.db")) {
+		if(copy("webtoon_init.db", "webtoon.db")) {
+			$dbcopy = "Y";
+		}
+	}
+	$fileSize = filesize("./webtoon.db");
+	if ( $fileSize < 1000 ) {
+		unlink("./webtoon.db");
+		$dbcopy = "N";
+		if(copy("webtoon_init.db", "webtoon.db")) {
+			$dbcopy = "Y";
+		}
+		$fileSize = filesize("./webtoon.db");
+		if ( $fileSize < 1000 ) {  $dbcopy = "F"; }
 	}
 
 ?><!DOCTYPE html>

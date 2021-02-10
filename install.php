@@ -105,6 +105,15 @@
 <?php
 	}
 ?>
+<?php
+	if(!file_exists("./lib/webtoon.db")) {
+?>
+				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
+					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='Database 생성하기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="./lib/install_dbmake.php";'></td></tr></table>
+				</div>
+<?php
+	}
+?>
 			</dd>
 		</dl>
 	</div>

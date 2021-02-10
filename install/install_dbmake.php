@@ -6,10 +6,6 @@
     header("Connection: close");
 
 	$dbcopy = "N";
-	if(file_exists("webtoon.db")) {
-		unlink("webtoon.db");
-	}
-
 	if(!file_exists("webtoon.db")) {
 		if(copy("webtoon_init.db", "webtoon.db")) {
 			$dbcopy = "Y";
@@ -50,7 +46,7 @@
 			<dt>기본 경로 설정</dt>
 			<dd>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
-					<?php if ($dbcopy=="Y") { echo "Database를 초기화하였습니다."; } ?>
+					<?php if ($dbcopy=="Y") { echo "Database를 생성하였습니다."; } ?>
 				</div>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='기본경로 설정하기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="../install.php";'></td></tr></table>
