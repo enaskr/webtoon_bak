@@ -1,7 +1,7 @@
 <?php
 	$server_path = (str_replace(basename(__FILE__), "", realpath(__FILE__)));
 	$http_path = (str_replace(basename($_SERVER["PHP_SELF"]),"",$_SERVER["PHP_SELF"]));
-	include($server_path.'../lib/header.php');
+	include($server_path.'../lib/config.php');
 
 	if ( $USER_LEVEL == 99999 ) {
 		$userList = "DELETE FROM USER_INFO WHERE USER_ID = '".$_POST["userid"]."'; ";
