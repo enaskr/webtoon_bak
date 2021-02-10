@@ -37,6 +37,24 @@
 <script type="text/javascript">
 	var lastpath = '<?php echo $lastpath; ?>';
 	var lastpath2 = '<?php echo $lastpath2; ?>';
+
+	$(function() {
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 500) {
+				$('#MOVE_TOP_BTN').fadeIn();
+			} else {
+				$('#MOVE_TOP_BTN').fadeOut();
+			}
+		});
+
+		$("#MOVE_TOP_BTN").click(function() {
+			$('html, body').animate({
+				scrollTop : 0
+			}, 400);
+			return false;
+		});
+	});
+
 	//Javascript
 	window.onpageshow =  function(event) { // iOS BFCahe 대응
 		if (event.persisted) {
@@ -156,3 +174,4 @@
 </table>
 <?php } ?>
 <?php } ?>
+<a id="MOVE_TOP_BTN" href="#"><img src="<?php echo $homeurl; ?>lib/img/top.png" width="40px" height="40px"></a>
