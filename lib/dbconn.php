@@ -89,7 +89,7 @@
 		if ( $config["login_view"]!=null && $config["login_view"]=="Y" && $isLogin != true ) {
 			unset($_COOKIE["MBRID"]);
 			setcookie("MBRID", "", time()-60, "/");
-			if ( $config["login_view"] == "Y" && ( strpos($_SERVER['REQUEST_URI'], "/user/newUserJoin") != true && strpos($_SERVER['REQUEST_URI'], "/user/userform") != true && strpos($_SERVER['REQUEST_URI'], "/user/userjoin") != true && strpos($_SERVER['REQUEST_URI'], "/user/userIdCheck") != true && strpos($_SERVER['REQUEST_URI'], "/index.php") != true && strpos($_SERVER['REQUEST_URI'], "/url.php") != true ) ) {
+			if ( $config["login_view"] == "Y" && ( strpos($_SERVER['REQUEST_URI'], "user/newUserJoin.php") != true && strpos($_SERVER['REQUEST_URI'], "user/userform.php") != true && strpos($_SERVER['REQUEST_URI'], "user/userjoin.php") != true && strpos($_SERVER['REQUEST_URI'], "user/userIdCheck.php") != true && strpos($_SERVER['REQUEST_URI'], "index.php") != true && strpos($_SERVER['REQUEST_URI'], "url.php") != true ) ) {
 				Header("Location:".$homeurl);
 			}
 		}
