@@ -80,12 +80,15 @@
 	if(file_exists("../install/install_save.php")) { unlink("../install/install_save.php"); }
 	if(file_exists("../install/install_delete.php")) { unlink("../install/install_delete.php"); }
 	if(file_exists("../install/install_dbreset.php")) { unlink("../install/install_dbreset.php"); }
+	if(file_exists("../install/install_dbmake.php")) { unlink("../install/install_dbmake.php"); }
 	copy("install_save.php", "../install/install_save.php");
 	copy("install_delete.php", "../install/install_delete.php");
 	copy("install_dbreset.php", "../install/install_dbreset.php");
+	copy("install_dbmake.php", "../install/install_dbmake.php");
 	if(file_exists("../install/install_save.php")) { unlink("install_save.php"); }
 	if(file_exists("../install/install_delete.php")) { unlink("install_delete.php"); }
 	if(file_exists("../install/install_dbreset.php")) { unlink("install_dbreset.php"); }
+	if(file_exists("../install/install_dbmake.php")) { unlink("install_dbmake.php"); }
 
 ?><!DOCTYPE html>
 <html lang='ko'>

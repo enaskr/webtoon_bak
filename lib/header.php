@@ -124,7 +124,7 @@
 </span></span>
 <span id="webtoon"><span style="background:#8f7ee5;padding:5px 5px 5px 5px;box-sizing:border-box;border-radius:10px;margin:0px 0px 0px 0px"><a href="javascript:void(0);" onClick="toggle('webtoon');" style="font-weight:900;color:#ffff00;word-break:keep-all;">웹툰</a></span><span id="webtoonlist" style="display:none;padding:5px 5px 5px 5px;margin:5px 0px 5px 0px;">
 <?php
-		$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) < ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='webtoon' AND UPDATE_YN='Y' ORDER BY SITE_NAME ASC;";
+		$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='webtoon' AND UPDATE_YN='Y' ORDER BY SITE_NAME ASC;";
 		$site_result = $webtoonDB->query($getSiteSQL);
 		while($siteDB = $site_result->fetchArray(SQLITE3_ASSOC)){
 			$getSiteId = $siteDB['SITE_ID'];
@@ -138,7 +138,7 @@
 ?></span></span>
 <span id="manga"><span style="background:#8f7ee5;padding:5px 5px 5px 5px;box-sizing:border-box;border-radius:10px;margin:0px 0px 0px 0px"><a href='javascript:void(0);' onClick='toggle("manga");' style="font-weight:900;color:#ffff00;word-break:keep-all;">만화책</a></span><span id="mangalist" style="display:none;padding:5px 5px 5px 5px;margin:5px 0px 5px 0px;">
 <?php
-	$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) < ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='manga' AND UPDATE_YN='Y' ORDER BY SITE_NAME ASC;";
+	$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='manga' AND UPDATE_YN='Y' ORDER BY SITE_NAME ASC;";
 	$site_result = $webtoonDB->query($getSiteSQL);
 	while($siteDB = $site_result->fetchArray(SQLITE3_ASSOC)){
 		$getSiteId = $siteDB['SITE_ID'];
