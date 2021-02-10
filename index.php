@@ -1,5 +1,4 @@
 <?php
-	$cookieMBRID = $_COOKIE["MBRID"];
 	if(file_exists("./lib/config.php") && file_exists("./lib/webtoon.db")) {
 	include('./lib/config.php');
 ?><!DOCTYPE html>
