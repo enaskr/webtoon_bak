@@ -1,5 +1,6 @@
 <?php
-include('../../lib/header.php');
+	include('../../lib/config.php');
+	include($homepath.'lib/header.php');
 	$epiurl = $viewUrl."?".str_replace("{toondtlid}",$_GET["ws_id"],$viewParam);
 	$epiurl = str_replace("{toonid}",$_GET["wr_id"],$epiurl);
 	$epiurl = str_replace("{type}",$_GET["type"],$epiurl);

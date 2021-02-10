@@ -1,5 +1,6 @@
 <?php
-	include('../lib/header.php');
+	include('../lib/config.php');
+	include($homepath.'lib/header.php');
 	$keyword = $_GET['keyword'];
 	if ( $keyword != null && strlen($keyword) > 0 ) $keywordstr = $keyword;
 	else $keywordstr = "";

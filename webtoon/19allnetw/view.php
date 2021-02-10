@@ -1,5 +1,6 @@
 <?php
-	include('../../lib/header.php');
+	include('../../lib/config.php');
+	include($homepath.'lib/header.php');
 	$epiurl = str_replace("{toonid}",$_GET["wr_id"], str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl));
 
 	$get_images = array();

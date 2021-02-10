@@ -8,7 +8,7 @@
 	$server_path = str_replace(basename(__FILE__), "", str_replace(basename(__FILE__), "", realpath(__FILE__)));
 	$http_path = str_replace(basename($_SERVER["PHP_SELF"]),"",$_SERVER["PHP_SELF"]);
 
-	$fileSize = filesize("./lib/pathinfo.php");
+	$fileSize = filesize("./lib/config.php");
 	if ( $fileSize < 40 ) {
 ?><!DOCTYPE html>
 <html lang='ko'>
@@ -81,17 +81,17 @@
 			<dd>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
 					기본 경로를 변경하시려면<br>
-					<font color="red">[설치경로]/lib/pathinfo.php</font>를 삭제한 후<br>
+					<font color="red">[설치경로]/lib/config.php</font>를 삭제한 후<br>
 					다시 시도해주세요.
 				</div>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='홈으로 가기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="./";'></td></tr></table>
 				</div>
 <?php
-	if(file_exists("./lib/pathinfo.php")) {
+	if(file_exists("./lib/config.php")) {
 ?>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
-					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='pathinfo.php 삭제하기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="./lib/install_delete.php";'></td></tr></table>
+					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='config.php 삭제하기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="./lib/install_delete.php";'></td></tr></table>
 				</div>
 <?php
 	}

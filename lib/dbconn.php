@@ -1,10 +1,14 @@
 <?php
 	session_start();
-	$cookieMBRID = $_COOKIE["MBRID"];
+	$cookieMBRID = "";
+	if (isset($_COOKIE['MBRID']) ) {
+		$cookieMBRID = $_COOKIE['MBRID']; 
+	}
 	$canView = false;
-	//$cookieMBRID = "SIF5L0+sjBUbkxCi51NRWr/gKRmKTuxs5LgIgDonMveTxQW53LvIwY4jv2Fi+wlWV+sVJcY365s7k+d7cAASh1pk8zVGH5Ssy6QZKDtMDocOrmVOg27O8/zBhRoTyLm9";
 	$isLogin = false;
 	$config = array();
+	$USER_LEVEL = 0;
+	$USER_ID = "";
 
 	$webtoonDB = new SQLite3($homepath.'lib/webtoon.db');
 	if($webtoonDB->lastErrorCode() == 0){
@@ -18,6 +22,7 @@
 
 		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, MAIN_VIEW, ORDER_NUM, UPDATE_YN FROM SITE_INFO WHERE SERVER_PATH = '".$lastpath."' AND USE_YN='Y' LIMIT 1;";
 		$conf_result = $webtoonDB->query($sql);
+		$useLevel = 0;
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			$siteId = $conf["SITE_ID"];
 			$siteName = $conf["SITE_NAME"];
@@ -73,9 +78,6 @@
 
 				if ( $useLevel <= $USER_LEVEL ) $canView = true;
 
-				define('KEY', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
-				define('KEY_128', substr(KEY,0,128/8));
-				define('KEY_256', substr(KEY,0,256/8));
 				$mbrid = openssl_encrypt($MBR_NO."|".date("Ymd", time())."|".$mbr_pass, 'AES-256-CBC', KEY_256, 0, KEY_128);
 				setcookie("MBRID", $mbrid, time()+3600, "/");  // 3600초 = 60초 * 60 분 * 1시간
 			}
@@ -87,7 +89,9 @@
 		if ( $config["login_view"]!=null && $config["login_view"]=="Y" && $isLogin != true ) {
 			unset($_COOKIE["MBRID"]);
 			setcookie("MBRID", "", time()-60, "/");
-			Header("Location:".$homeurl); 
+			if ( $config["login_view"] == "Y" && ( strpos($_SERVER['REQUEST_URI'], "/user/newUserJoin") != true && strpos($_SERVER['REQUEST_URI'], "/user/userform") != true && strpos($_SERVER['REQUEST_URI'], "/user/userjoin") != true && strpos($_SERVER['REQUEST_URI'], "/user/userIdCheck") != true && strpos($_SERVER['REQUEST_URI'], "/index.php") != true && strpos($_SERVER['REQUEST_URI'], "/url.php") != true ) ) {
+				Header("Location:".$homeurl);
+			}
 		}
 
 	} else {

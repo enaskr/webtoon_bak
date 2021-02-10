@@ -1,7 +1,7 @@
 <?php
 	$cookieMBRID = $_COOKIE["MBRID"];
-	if(file_exists("./lib/pathinfo.php") && file_exists("./lib/webtoon.db")) {
-	include('./lib/dbconn.php');
+	if(file_exists("./lib/config.php") && file_exists("./lib/webtoon.db")) {
+	include('./lib/config.php');
 ?><!DOCTYPE html>
 <html lang='ko'>
 <head>
@@ -20,9 +20,6 @@
 <?php
 		if ( $cookieMBRID!=null && strlen($cookieMBRID) > 0 ) {
 			//$cookieUserName = "jackie";
-			define('KEY', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');
-			define('KEY_128', substr(KEY,0,128/8));
-			define('KEY_256', substr(KEY,0,256/8));
 			$mbr_id = openssl_decrypt($cookieMBRID, 'AES-256-CBC', KEY_256, 0, KEY_128);
 			$mbrpos = explode("|", $mbr_id);
 			$mbr_no = $mbrpos[0];

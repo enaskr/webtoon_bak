@@ -1,5 +1,5 @@
 <?php
-	include('../lib/header.php');
+	include('../lib/config.php');
 	$isSuccess = true;
 
 	if ( $USER_LEVEL == 99999 ) {

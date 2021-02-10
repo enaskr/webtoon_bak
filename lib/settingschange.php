@@ -1,7 +1,6 @@
 <?php
-	$server_path = (str_replace(basename(__FILE__), "", realpath(__FILE__)));
-	$http_path = (str_replace(basename($_SERVER["PHP_SELF"]),"",$_SERVER["PHP_SELF"]));
-	include($server_path.'../lib/header.php');
+	include('../lib/config.php');
+	include($homepath.'lib/header.php');
 	if ( $USER_LEVEL == 99999 ) {
 		$conf_sql = "SELECT CONF_NAME, CONF_VALUE, CONF_ADD1, CONF_ADD2, REGDTIME FROM SERVER_CONFIG WHERE CONF_NAME='".$_POST["CONF_NAME"]."';";
 		$conf_result = $webtoonDB->query($conf_sql);

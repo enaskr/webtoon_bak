@@ -1,5 +1,6 @@
 <?php
-	include('../../lib/header.php');
+	include('../../lib/config.php');
+	include($homepath.'lib/header.php');
 ?>
 <?php
 $url = $siteUrl.$listUrl."?".str_replace("{toonid}",$_GET["wr_id"],$listParam);

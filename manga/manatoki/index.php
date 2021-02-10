@@ -1,18 +1,19 @@
 <?php
-	include('../../lib/header.php');
+	include('../../lib/config.php');
+	include($homepath.'lib/header.php');
 ?>
 <div id='container'>
 	<div class='item'>
 		<dl>
 <?php
-	if($_GET['keyword'] != null){
+	if($keywordstr != null){
 ?>
 			<dt>마나토끼 검색결과:<?php echo $_GET["keyword"]; ?></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
-		$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",$_GET['keyword'],$searchParam);
+		$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",$keywordstr,$searchParam);
 		echo "<script type='text/javascript'>console.log('$url');</script>";
 
 		$ch = curl_init(); //curl 로딩
@@ -42,8 +43,8 @@
 				}
 				foreach($f->find('a') as $g){
 					$target_link = $g->href;
-					$targeturl = str_replace("?stx=".$_GET['keyword'],"",$target_link);
-					$targeturl = str_replace("?stx=".urlencode($_GET['keyword']),"",$targeturl);
+					$targeturl = str_replace("?stx=".$keywordstr,"",$target_link);
+					$targeturl = str_replace("?stx=".urlencode($keywordstr),"",$targeturl);
 					$targeturl = str_replace("&page=1","",$targeturl);
 					break;
 				}

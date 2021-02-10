@@ -1,5 +1,6 @@
 <?php
-	include('../../lib/header.php');
+	include('../../lib/config.php');
+	include($homepath.'lib/header.php');
 ?>
 <div id='container'>
 	<div class='item'>
@@ -7,14 +8,14 @@
 <?php
 
 if ( $page == null ) $page = "1";
-if($_GET['keyword'] != null){
+if($keywordstr != null){
 ?>
 			<dt><?php echo $siteName; ?> 검색결과:<?php echo $_GET["keyword"]; ?></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 <?php
-	$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",urlencode($_GET['keyword']),$searchParam);
+	$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",urlencode($keywordstr),$searchParam);
 	echo "<script type='text/javascript'>console.log('$url');</script>";
 
 	$ch = curl_init(); //curl 로딩

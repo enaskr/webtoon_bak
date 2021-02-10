@@ -6,8 +6,8 @@
     header("Connection: close");
 
 	$dbcopy = "N";
-	if(file_exists("pathinfo.php")) {
-		unlink("pathinfo.php");
+	if(file_exists("config.php")) {
+		unlink("config.php");
 		$dbcopy = "Y";
 	}
 
@@ -35,7 +35,7 @@
 			<dt>기본 경로 설정</dt>
 			<dd>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
-					<?php if ($dbcopy=="Y") { echo "pathinfo.php 파일을 삭제했습니다."; } ?>
+					<?php if ($dbcopy=="Y") { echo "config.php 파일을 삭제했습니다."; } ?>
 				</div>
 				<div class='group' style='padding:0px;font-size:20px;line-height:50px'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr><td align="center" style='font-size:20px;color:#000000;width:25%;background-color:#e3e3e3;line-height:50px;'><input type="button" value='기본경로 설정하기' style='border:none;line-height:50px;width:100%;background-color:#e3e3e3;' onClick='location.href="../install.php";'></td></tr></table>

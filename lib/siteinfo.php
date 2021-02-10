@@ -1,5 +1,6 @@
 <?php
-	include('../lib/header.php');
+	include('../lib/config.php');
+	include($homepath.'lib/header.php');
 ?>
 <script type="text/javascript">
 	function saveSetting(frm) {
@@ -23,6 +24,9 @@
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
+<?php
+	if ( $USER_LEVEL == 99999 ) {
+?>
 						<tr style='height:30px;'>
 							<td align="center" style='width:25%;font-size:15px;font-weight:bold;color:#000000;'>ID</td>
 							<td align="center" style='width:10%;font-size:15px;font-weight:bold;color:#000000;'>구분</td>
@@ -31,7 +35,6 @@
 							<td align="center" style='width:25%;font-size:15px;font-weight:bold;color:#000000;'>업데이트실행</td>
 						</tr>
 <?php
-	if ( $USER_LEVEL == 99999 ) {
 		$toonsiteList = "SELECT SITE_ID, SITE_NAME, SITE_TYPE, SERVER_PATH, MAIN_VIEW, UPDATE_YN, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE, UPTDTIME FROM SITE_INFO ORDER BY SITE_TYPE DESC, SITE_NAME ASC; ";
 		$webtoonView = $webtoonDB->query($toonsiteList);
 		while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
@@ -52,6 +55,12 @@
 			echo "<td style='font-size:15px;' align=center valign=middle><input type='text' style='border:none; line-height:15px; width:100%;font-weight:bold;text-align:center;background-color: #f8f8f8;' name='UPDATE_EXECUTE' value='".$dbupdateexecute."'></td>";
 			echo "</tr>\n";
 		}
+	} else {
+?>
+						<tr style='height:100px;'>
+							<td align="center" colspan="5" style='width:100%;font-size:15px;font-weight:bold;color:#000000;'>권한이 없습니다.<br><br>관리자에게 문의하세요.</td>
+						</tr>
+<?php
 	}
 
 

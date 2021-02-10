@@ -1,5 +1,5 @@
 <?php
-	include('../../lib/header.php');
+	include('../../lib/config.php');
 	$epiurl = str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl);
 
 	$get_images = array();

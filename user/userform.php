@@ -1,5 +1,6 @@
 <?php
-	include('../lib/header.php');
+	include('../lib/config.php');
+	include($homepath.'lib/header.php');
 	$rand_num = sprintf('%06d',rand(000000,999999));
 	$mbr_no = $thisDate.$rand_num;
 ?>

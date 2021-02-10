@@ -1,5 +1,5 @@
 <?php
-	include('header.php');
+	include('config.php');
 
 	$siteid = $_GET["siteid"];
 	$toonid = $_GET["toonid"];

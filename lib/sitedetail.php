@@ -1,5 +1,6 @@
 <?php
-	include('../lib/header.php');
+	include('../lib/config.php');
+	include($homepath.'lib/header.php');
 ?>
 <script type="text/javascript">
 	function saveSetting(frm) {
