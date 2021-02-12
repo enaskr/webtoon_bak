@@ -20,25 +20,35 @@ do {
 	if ( $pagenum == 1 ) {
 		foreach($get_html_contents->find('div.cover-info-wrap') as $e){
 			$f = str_get_html($e->innertext);
+			$contcnt = 0;
 			foreach($f->find('div.info') as $g){
 				$h = str_get_html($g->innertext);
 				foreach($h->find('h1') as $i){
 					$title = trim(strip_tags($i));
+					$contcnt++;
+					break;
 				}
 				foreach($h->find('div.genre') as $i){
 					$genre = trim(strip_tags($i));
+					$contcnt++;
+					break;
 				}
 				foreach($h->find('div.summary') as $i){
 					$contents = trim(strip_tags($i));
+					$contcnt++;
+					break;
 				}
 				foreach($h->find('p.artist') as $i){
 					$author = trim(strip_tags($i));
+					$contcnt++;
 					break;
 				}
+				if ( $contcnt == 4 ) break;
 			}
 
 			foreach($f->find('img') as $g){
 				$thumb = $g->src;
+				break;
 			}
 		}
 		foreach($get_html_contents->find('ul.pagination') as $e){
@@ -46,6 +56,7 @@ do {
 			foreach($f->find('a') as $g){
 				$pagecntstr = $g->href;
 				$pagecnt = (explode("/",$pagecntstr))[7];
+				break;
 			}
 		}
 $_SESSION['THUMB'] = $thumb;
@@ -85,9 +96,11 @@ echo "<script type='text/javascript'>console.log('THUMB=".$thumb."');</script>";
 			$targeturl = str_replace($siteUrl,"",$g->href);
 			$toonstr = explode("/",$targeturl);
 			$ws_id = $toonstr[4];
+			break;
 		}
 		foreach($f->find('div.episode-title') as $g){
 			$epititle = trim(strip_tags($g));
+			break;
 		}
 
 		$isAlreadyView = "SELECT UV.MBR_NO AS MBR_NO, UV.SITE_ID AS SITE_ID, UV.TOON_ID AS TOON_ID, UVD.VIEW_ID AS VIEW_ID, UVD.UPTDTIME AS UPTDTIME FROM USER_VIEW UV, USER_VIEW_DTL UVD ";

@@ -35,21 +35,26 @@
 				$f = str_get_html($e->innertext);
 				foreach($f->find('img') as $g){
 					$img_link = $g->src;
+					break;
 				}
 				foreach($f->find('a') as $g){
 					$epilink = $g->href;
 					$toonstr = explode("/",$epilink);
 					if ( startsWith($epilink, "http") ) {
 						$wr_id = $toonstr[5];
+						break;
 					} else {
 						$wr_id = $toonstr[3];
+						break;
 					}
 				}
 				foreach($f->find('strong.title') as $g){
 					$title = trim(strip_tags($g));
+					break;
 				}
 				foreach($f->find('span.cate') as $g){
 					$genre = trim(strip_tags($g));
+					break;
 				}
 
 				$isAlreadyView = "SELECT MBR_NO, SITE_ID, TOON_ID, UPTDTIME FROM USER_VIEW ";
@@ -104,21 +109,26 @@
 					$f = str_get_html($e->innertext);
 					foreach($f->find('img') as $g){
 						$img_link = $g->src;
+						break;
 					}
 					foreach($f->find('a') as $g){
 						$epilink = $g->href;
 						$toonstr = explode("/",$epilink);
 						if ( startsWith($epilink, "http") ) {
 							$wr_id = $toonstr[5];
+							break;
 						} else {
 							$wr_id = $toonstr[3];
+							break;
 						}
 					}
 					foreach($f->find('strong.title') as $g){
 						$title = trim(strip_tags($g));
+						break;
 					}
 					foreach($f->find('span.cate') as $g){
 						$genre = trim(strip_tags($g));
+						break;
 					}
 
 					$isAlreadyView = "SELECT MBR_NO, SITE_ID, TOON_ID, UPTDTIME FROM USER_VIEW ";
@@ -172,21 +182,26 @@
 					$f = str_get_html($e->innertext);
 					foreach($f->find('img') as $g){
 						$img_link = $g->src;
+						break;
 					}
 					foreach($f->find('a') as $g){
 						$epilink = $g->href;
 						$toonstr = explode("/",$epilink);
 						if ( startsWith($epilink, "http") ) {
 							$wr_id = $toonstr[5];
+							break;
 						} else {
 							$wr_id = $toonstr[3];
+							break;
 						}
 					}
 					foreach($f->find('strong.title') as $g){
 						$title = trim(strip_tags($g));
+						break;
 					}
 					foreach($f->find('span.cate') as $g){
 						$genre = trim(strip_tags($g));
+						break;
 					}
 
 					$isAlreadyView = "SELECT MBR_NO, SITE_ID, TOON_ID, UPTDTIME FROM USER_VIEW ";
