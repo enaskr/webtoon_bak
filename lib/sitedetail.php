@@ -148,7 +148,7 @@
 
 			echo "<tr style='height:30px;'>\n";
 			echo "<td align='center' style='font-size:15px;font-weight:bold;color:#000000;'>업데이트 실행여부</td>";
-			echo "<td align='center' style=';font-size:15px;font-weight:bold;color:#000000;text-align-last:center;'><select name='UPDATE_EXECUTE' style='border:none; font-size:20px; line-height:30px; width:100%;font-weight:bold;text-align:center;background-color: #f8f8f8;'><option value='N' ".$strupdateynN.">실패</option><option value='Y' ".$strupdateynY.">성공</option></select></td>\n";
+			echo "<td align='center' style=';font-size:15px;font-weight:bold;color:#000000;text-align-last:center;'><select name='UPDATE_EXECUTE' style='border:none; font-size:20px; line-height:30px; width:100%;font-weight:bold;text-align:center;background-color: #f8f8f8;'><option value='N' ".$strupdateynN.">업데이트 안함</option><option value='Y' ".$strupdateynY.">업데이트 실행</option></select></td>\n";
 			echo "</tr>\n";
 
 			echo "<tr style='height:30px;'>\n";

@@ -83,7 +83,7 @@
 	}
 	if ( $dbupdateexecute != null && $dbupdateexecute == "Y" ) {
 		// 펀비 (FUNBE)
-		//$target = "https://linktong1.com/bbs/board.php?bo_table=webtoon&wr_id=38";
+		//$target = "https://linktong2.com/bbs/board.php?bo_table=webtoon&wr_id=38";
 		$newurl = "";
 		$target = "https://linkzip.site/board_SnzU08/2906";
 		$get_html_contents = file_get_html($target);
@@ -115,6 +115,46 @@
 		}
 	}
 
+	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = 'TOONKOR'; ";
+	$webtoonView = $webtoonDB->query($toonsiteList);
+	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
+		$dbsiteid = $row["SITE_ID"];
+		$dbupdateexecute = $row["UPDATE_EXECUTE"];
+	}
+	if ( $dbupdateexecute != null && $dbupdateexecute == "Y" ) {
+		// 툰코 (TOONKOR)
+		//$target = "https://linktong2.com/bbs/board.php?bo_table=webtoon&wr_id=10";
+		$newurl = "";
+		$target = "https://linkzip.site/board_SnzU08/634";
+		$get_html_contents = file_get_html($target);
+		for($html_c = 0; $html_c < $try_count; $html_c++){
+			if(strlen($get_html_contents) > 10000){
+				break;
+			} else {
+				$get_html_contents = "";
+				$get_html_contents = file_get_html($target);
+			}
+		}
+
+		if ( strlen($get_html_contents) > 0 ) {
+			foreach($get_html_contents->find('div.document_634_452') as $e){
+				$f = str_get_html($e->innertext);
+				foreach($f->find('u') as $g){
+					$newurl = $g->innertext;
+					break;
+				}
+			}
+		}
+		if ( strlen($newurl) > 10 ) {
+			if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
+			$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='Y' WHERE SITE_ID = 'TOONKOR';");
+			echo "TOONKOR => ".$newurl."\n";
+		} else {
+			$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = 'TOONKOR';");
+			echo "TOONKOR FAIL!\n";
+		}
+	}
+
 	$toonsiteList = "SELECT SITE_ID, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE FROM SITE_INFO WHERE SITE_ID = '19ALLNET'; ";
 	$webtoonView = $webtoonDB->query($toonsiteList);
 	while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
@@ -123,7 +163,7 @@
 	}
 	if ( $dbupdateexecute != null && $dbupdateexecute == "Y" ) {
 		// 19올넷 (19ALLNET) / 19올넷웹툰 (19ALLNETW)
-		//$target = "https://linktong1.com/bbs/board.php?bo_table=webtoon&wr_id=38";
+		//$target = "https://linktong2.com/bbs/board.php?bo_table=webtoon&wr_id=38";
 		$newurl = "";
 		$target = "https://linkzip.site/board_SnzU08/658";
 		$get_html_contents = file_get_html($target);
