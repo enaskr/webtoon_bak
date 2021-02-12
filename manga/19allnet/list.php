@@ -56,9 +56,7 @@ do {
 			foreach($f->find('a') as $g){
 				$pagecntstr = $g->href;
 				$pagecnt = (explode("/",$pagecntstr))[7];
-				break;
 			}
-			if ( $pagecnt != null ) break;
 		}
 $_SESSION['THUMB'] = $thumb;
 setcookie("THUMB", $thumb, time()+1800, "/");

@@ -56,7 +56,6 @@ do {
 			foreach($f->find('a') as $g){
 				$pagecntstr = $g->href;
 				$pagecnt = (explode("/",$pagecntstr))[7];
-				break;
 			}
 		}
 $_SESSION['THUMB'] = $thumb;
