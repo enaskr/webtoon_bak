@@ -39,7 +39,11 @@
 				foreach($f->find('a') as $g){
 					$epilink = $g->href;
 					$toonstr = explode("/",$epilink);
-					$wr_id = $toonstr[5];
+					if ( startsWith($epilink, "http") ) {
+						$wr_id = $toonstr[5];
+					} else {
+						$wr_id = $toonstr[3];
+					}
 				}
 				foreach($f->find('strong.title') as $g){
 					$title = trim(strip_tags($g));
@@ -108,7 +112,11 @@
 					foreach($f->find('a') as $g){
 						$epilink = $g->href;
 						$toonstr = explode("/",$epilink);
-						$wr_id = $toonstr[5];
+						if ( startsWith($epilink, "http") ) {
+							$wr_id = $toonstr[5];
+						} else {
+							$wr_id = $toonstr[3];
+						}
 					}
 					foreach($f->find('strong.title') as $g){
 						$title = trim(strip_tags($g));
@@ -177,7 +185,11 @@
 					foreach($f->find('a') as $g){
 						$epilink = $g->href;
 						$toonstr = explode("/",$epilink);
-						$wr_id = $toonstr[5];
+						if ( startsWith($epilink, "http") ) {
+							$wr_id = $toonstr[5];
+						} else {
+							$wr_id = $toonstr[3];
+						}
 					}
 					foreach($f->find('strong.title') as $g){
 						$title = trim(strip_tags($g));
