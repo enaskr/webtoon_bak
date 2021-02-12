@@ -113,7 +113,7 @@
 			echo "<tr style='height:30px;'>\n";
 			echo "<td align='center' style='font-size:15px;font-weight:bold;color:#000000;'>SITE_URL</td>";
 			echo "<td align='center' style=';font-size:15px;font-weight:bold;color:#000000;'><input style='border:none; line-height:30px; width:90%;font-weight:bold;text-align:center;background-color: #f8f8f8;' type='text' name='SITE_URL' value='".$dbsite_url."'>";
-			echo "<img src='./lib/shortcuts.png' style='padding:0;margin:0;max-height:30px;width:10%;' onClick='window.open(\"".urldecode($dbsite_url)."\");'></td>\n";
+			echo "<img src='./img/shortcuts.png' style='padding:0;margin:0;max-height:30px;width:10%;' onClick='window.open(\"".urldecode($dbsite_url)."\");'></td>\n";
 			echo "</tr>\n";
 
 			echo "<tr style='height:30px;'>\n";
@@ -209,7 +209,7 @@
 			echo "<tr style='height:30px;'>\n";
 			echo "<td align='center' style='font-size:15px;font-weight:bold;color:#000000;'>NOTE</td>";
 			echo "<td align='center' style=';font-size:15px;font-weight:bold;color:#000000;'><input style='border:none; line-height:30px; width:90%;font-weight:bold;text-align:center;background-color: #f8f8f8;' type='text' name='NOTE' value='".$dbnote."'>";
-			echo "<img src='./lib/shortcuts.png' style='padding:0;margin:0;max-height:30px;width:10%;' onClick='window.open(\"".urldecode($dbnote)."\");'></td>\n";
+			echo "<img src='./img/shortcuts.png' style='padding:0;margin:0;max-height:30px;width:10%;' onClick='window.open(\"".urldecode($dbnote)."\");'></td>\n";
 			echo "</tr>\n";
 
 		}
