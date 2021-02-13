@@ -160,6 +160,9 @@
 	echo "		var imageSize = ".sizeof($get_images).";\n";
 	echo "		var img_list = new Array(";
 	foreach($get_images as $images){
+		if ( startsWith($images, "/") ) {
+			$images = $siteUrl.$images;
+		}
 		if ( substr($images, 0,16) == "https://manatoki" && ( substr($images, 19,3) == "com" || substr($images, 19,3) == "net" )) {
 			$images = str_replace(substr($images, 0,23), $siteUrl, $images);
 		}
@@ -297,6 +300,9 @@
 <?php
 
 	foreach($get_images as $images){
+		if ( startsWith($images, "/") ) {
+			$images = $siteUrl.$images;
+		}
 		if ( substr($images, 0,16) == "https://manatoki" && ( substr($images, 19,3) == "com" || substr($images, 19,3) == "net" )) {
 			$images = str_replace(substr($images, 0,23), $siteUrl, $images);
 		}
