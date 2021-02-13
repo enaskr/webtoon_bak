@@ -1,3 +1,4 @@
+<?php @ob_start();?>
 <?php
 	$strtitle = "";
 	$uri= $_SERVER['REQUEST_URI']; //uri를 구합니다.
