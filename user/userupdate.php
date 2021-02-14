@@ -6,7 +6,7 @@
 		if ( $_POST["uptMode"] == "PWD" ) {
 			$userList = "UPDATE USER_INFO SET USER_PASSWD='".strtoupper(hash("sha256", $_POST["newuserpassword"]))."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$_POST["userid"]."'; ";
 		} else {
-			$userList = "UPDATE USER_INFO SET USER_LEVEL='".$_POST["userlevel"]."', EMAIL='".$_POST["useremail"]."', PHONE='".$_POST["userphone"]."', USER_STATUS='".$_POST["userstatus"]."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$_POST["userid"]."'; ";
+			$userList = "UPDATE USER_INFO SET USER_LEVEL='".$_POST["userlevel"]."', EMAIL='".$_POST["useremail"]."', PHONE='".$_POST["userphone"]."', VIEW_ADULT='".$_POST["viewadult"]."', USER_STATUS='".$_POST["userstatus"]."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$_POST["userid"]."'; ";
 		}
 	} else {
 		if ( $_POST["uptMode"] == "PWD" ) {

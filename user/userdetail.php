@@ -54,9 +54,9 @@
 					<form name="userForm" method="post" action="./userupdate.php"><input type="hidden" name="userid" value="<?php echo $_GET["userid"];  ?>"><input type="hidden" name="uptMode" value="info">
 <?php
 	if ( $USER_LEVEL == 99999 ) {
-		$userList = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_STATUS, USER_LEVEL, LAST_LOGIN_DTIME, LAST_LOGIN_IPADDRESS, LOGIN_FAIL_COUNT, LOGIN_COUNT, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$_GET["userid"]."'; ";
+		$userList = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_STATUS, USER_LEVEL, LAST_LOGIN_DTIME, LAST_LOGIN_IPADDRESS, LOGIN_FAIL_COUNT, LOGIN_COUNT, VIEW_ADULT, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$_GET["userid"]."'; ";
 	} else {
-		$userList = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_STATUS, USER_LEVEL, LAST_LOGIN_DTIME, LAST_LOGIN_IPADDRESS, LOGIN_FAIL_COUNT, LOGIN_COUNT, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$USER_ID."'; ";
+		$userList = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_STATUS, USER_LEVEL, LAST_LOGIN_DTIME, LAST_LOGIN_IPADDRESS, LOGIN_FAIL_COUNT, LOGIN_COUNT, VIEW_ADULT, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$USER_ID."'; ";
 	}
 		$webtoonView = $webtoonDB->query($userList);
 		$viewDate = "";
@@ -70,6 +70,7 @@
 			$memuserPhone = $row["PHONE"];
 			$memuserStatus = $row["USER_STATUS"];
 			$memuserLevel = $row["USER_LEVEL"];
+			$memuserViewAdult = $row["VIEW_ADULT"];
 			$memuserLoginDate = $row["LAST_LOGIN_DTIME"];
 			$memuserLoginIpaddress = $row["LAST_LOGIN_IPADDRESS"];
 			$memuserLoginCount = $row["LOGIN_COUNT"];
@@ -81,6 +82,13 @@
 			if ( $memuserStatus == "REJECT" ) $rejectstr = "selected"; else $rejectstr="";
 			if ( $memuserStatus == "OK" ) $okstr = "selected"; else $okstr="";
 			if ( $memuserStatus == "APPROVED" ) $approvedstr = "selected"; else $approvedstr="";
+			if ( $memuserViewAdult != null && $memuserViewAdult == "Y" ) {
+				$strmemuserViewAdultY = "selected";
+				$strmemuserViewAdultN = "";
+			} else {
+				$strmemuserViewAdultY = "";
+				$strmemuserViewAdultN = "selected";
+			}
 
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td width=30%>회원번호</td><td>".$mbr_no."</td></tr>";
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>아이디</td><td>".$memuserID."</td></tr>";
@@ -89,6 +97,7 @@
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>성명</td><td>".$memuserName."</td></tr>";
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>이메일</td><td><input style='border:none; line-height:48px; width:100%;' type=text name=useremail value='".$memuserEmail."'></td></tr>";
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>전화번호</td><td><input style='border:none; line-height:48px; width:100%;' type=text name=userphone value='".$memuserPhone."'></td></tr>";
+			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td align='center' style=';font-size:15px;font-weight:bold;color:#000000;text-align-last:center;'><select name='viewadult' style='border:none; font-size:20px; line-height:30px; width:100%;font-weight:bold;text-align:center;background-color: #f8f8f8;'><option value='N' ".$strmemuserViewAdultN.">미노출</option><option value='Y' ".$strmemuserViewAdultY.">노출</option></select></td></tr>";
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>로그인일시</td><td><input style='border:none; line-height:48px; width:100%;' type=text name=logindate value='".$memuserLoginDate."'></td></tr>";
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>로그인 IP</td><td><input style='border:none; line-height:48px; width:100%;' type=text name=loginip value='".$memuserLoginIpaddress."'></td></tr>";
 			echo "<tr style='background-color:#f8f8f8' height='50' align='center'><td>로그인횟수</td><td><input style='border:none; line-height:48px; width:100%;' type=text name=logincnt value='".$memuserLoginCount."'></td></tr>";
