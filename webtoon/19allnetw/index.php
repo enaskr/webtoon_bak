@@ -71,7 +71,12 @@
 					$alreadyView = "<span style='font-size:11px; font-color:grey;'>[".$viewDate." viewed]</span>";
 				}
 
-				if ( $is_adult || $adult != "(19)" ) {
+				if ( $viewAdultSite && $viewAdultUser ) {
+					echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
+					echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id.">".$title."<br>[".$genre.strpos($genre, "성인")."]<br>".$alreadyView."</a>\n";
+					echo "</tr>\n";
+					$toonidx++;
+				} else if ( (!$viewAdultSite || !$viewAdultUser) && $adult != "(19)" ) {
 					echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
 					echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id.">".$title."<br>[".$genre.strpos($genre, "성인")."]<br>".$alreadyView."</a>\n";
 					echo "</tr>\n";
@@ -148,7 +153,12 @@
 						$alreadyView = "<span style='font-size:11px; font-color:grey;'>[".$viewDate." viewed]</span>";
 					}
 
-					if ( $config["view_adult"]=="Y" || $adult != "(19)" ) {
+					if ( $viewAdultSite && $viewAdultUser ) {
+						echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
+						echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id.">".$title."<br>[".$genre.strpos($genre, "성인")."]<br>".$alreadyView."</a>\n";
+						echo "</tr>\n";
+						$toonidx++;
+					} else if ( (!$viewAdultSite || !$viewAdultUser) && $adult != "(19)" ) {
 						echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
 						echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id.">".$title."<br>[".$genre.strpos($genre, "성인")."]<br>".$alreadyView."</a>\n";
 						echo "</tr>\n";
@@ -225,7 +235,12 @@
 						$alreadyView = "<span style='font-size:11px; font-color:grey;'>[".$viewDate." viewed]</span>";
 					}
 
-					if ( $is_adult || $adult != "(19)" ) {
+					if ( $viewAdultSite && $viewAdultUser ) {
+						echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
+						echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id.">".$title."<br>[".$genre."]<br>".$alreadyView."</a>\n";
+						echo "</tr>\n";
+						$toonidx++;
+					} else if ( (!$viewAdultSite || !$viewAdultUser) && $adult != "(19)" ) {
 						echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
 						echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($title)."&wr_id=".$wr_id.">".$title."<br>[".$genre."]<br>".$alreadyView."</a>\n";
 						echo "</tr>\n";

@@ -6,6 +6,8 @@
 	}
 	$canView = false;
 	$isLogin = false;
+	$viewAdultSite = false;
+	$viewAdultUser = false;
 	$config = array();
 	$USER_LEVEL = 0;
 	$USER_ID = "";
@@ -18,6 +20,7 @@
 			$config_add1[$conf["CONF_NAME"]] = $conf['CONF_ADD1'];
 			$config_add2[$conf["CONF_NAME"]] = $conf['CONF_ADD2'];
 		}
+		if ( $config["view_adult"] == "Y" ) $viewAdultSite = true;
 //		$config["view_adult"] / $config["max_list"] / $config["try_count"] / $config["login_view"] / $config["search_seq"]
 
 		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, MAIN_VIEW, ORDER_NUM, UPDATE_YN FROM SITE_INFO WHERE SERVER_PATH = '".$lastpath."' AND USE_YN='Y' LIMIT 1;";
@@ -73,6 +76,7 @@
 				$LAST_LOGIN_DTIME = $row["LAST_LOGIN_DTIME"];
 				$LAST_LOGIN_IPADDRESS = $row["LAST_LOGIN_IPADDRESS"];
 				$LOGIN_FAIL_COUNT = $row["LOGIN_FAIL_COUNT"];
+				$VIEW_ADULT = $row["VIEW_ADULT"];
 				$REGDTIME = $row["REGDTIME"];
 				$isLogin = true;
 
@@ -85,6 +89,7 @@
 				unset($_COOKIE["MBRID"]);
 				setcookie("MBRID", "", time()-60, "/");
 			}
+			if ( $VIEW_ADULT == "Y" ) $viewAdultUser = true;
 		}
 		if ( $config["login_view"]!=null && $config["login_view"]=="Y" && $isLogin != true ) {
 			unset($_COOKIE["MBRID"]);

@@ -69,7 +69,12 @@ if($keywordstr != null){
 				$alreadyView = "<span style='font-size:11px; font-color:grey;'>[".$viewDate." viewed]</span>";
 			}
 
-			if ( $config["view_adult"] == "Y" || $adult != "(19)" ) {
+			if ( $viewAdultSite && $viewAdultUser ) {
+				echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link)." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
+				echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link).">".$subject."<br>[".$term."]<br>".$alreadyView."</a>\n";
+				echo "</tr>\n";
+				$loopcnt++;
+			} else if ( (!$viewAdultSite || !$viewAdultUser) && $adult != "(19)" ) {
 				echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link)." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
 				echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link).">".$subject."<br>[".$term."]<br>".$alreadyView."</a>\n";
 				echo "</tr>\n";
@@ -141,7 +146,12 @@ if($keywordstr != null){
 				$alreadyView = "<span style='font-size:11px; font-color:grey;'>[".$viewDate." viewed]</span>";
 			}
 
-			if ( $config["view_adult"] == "Y" || $adult != "(19)" ) {
+			if ( $viewAdultSite && $viewAdultUser ) {
+				echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link)." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
+				echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link).">".$subject."<br>[".$genre."]<br>".$alreadyView."</a>\n";
+				echo "</tr>\n";
+				$loopcnt++;
+			} else if ( (!$viewAdultSite || !$viewAdultUser) && $adult != "(19)" ) {
 				echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link)." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
 				echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link).">".$subject."<br>[".$genre."]<br>".$alreadyView."</a>\n";
 				echo "</tr>\n";
@@ -211,7 +221,12 @@ if($keywordstr != null){
 				$alreadyView = "<span style='font-size:11px; font-color:grey;'>[".$viewDate." viewed]</span>";
 			}
 
-			if ( $config["view_adult"] == "Y" || $adult != "(19)" ) {
+			if ( $viewAdultSite && $viewAdultUser ) {
+				echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link)." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
+				echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link).">".$subject."<br>[".$genre."]<br>".$alreadyView."</a>\n";
+				echo "</tr>\n";
+				$loopcnt++;
+			} else if ( (!$viewAdultSite || !$viewAdultUser) && $adult != "(19)" ) {
 				echo "<tr style='background-color:#f8f8f8'><td style='width:86px;font-size:16px;color:#8000ff;' align=center valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link)." style='margin:0px;padding:3px 3px 3px 3px'><img class='rounded-lg' src=".$img_link." style='width:80px;max-height:80px;'></a></td> ";
 				echo "<td style='word-wrap:break-word;max-height:80px;' valign=middle><a href=list.php?title=".urlencode($subject)."&wr_id=".urlencode($target_link).">".$subject."<br>[".$genre."]<br>".$alreadyView."</a>\n";
 				echo "</tr>\n";
