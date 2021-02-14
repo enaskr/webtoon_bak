@@ -25,7 +25,7 @@
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><form name="frm" method="post" action="./siteupdate.php">
 <?php
-	if ( $USER_LEVEL == 99999 ) {
+	if ( $USER_LEVEL >= 99999 ) {
 		$toonsiteList = "SELECT SITE_ID, SITE_NAME, SITE_ALIAS, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ";
 		$toonsiteList = $toonsiteList."ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, USE_YN, NOTE, MAIN_VIEW, ORDER_NUM, UPDATE_YN, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE, REGDTIME, UPTDTIME ";
 		$toonsiteList = $toonsiteList."FROM SITE_INFO WHERE SITE_ID='".$_GET["siteid"]."' LIMIT 1; ";

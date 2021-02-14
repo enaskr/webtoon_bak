@@ -53,7 +53,7 @@
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 					<form name="userForm" method="post" action="./userupdate.php"><input type="hidden" name="userid" value="<?php echo $_GET["userid"];  ?>"><input type="hidden" name="uptMode" value="info">
 <?php
-	if ( $USER_LEVEL == 99999 ) {
+	if ( $USER_LEVEL >= 99999 ) {
 		$userList = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_STATUS, USER_LEVEL, LAST_LOGIN_DTIME, LAST_LOGIN_IPADDRESS, LOGIN_FAIL_COUNT, LOGIN_COUNT, VIEW_ADULT, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$_GET["userid"]."'; ";
 	} else {
 		$userList = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_STATUS, USER_LEVEL, LAST_LOGIN_DTIME, LAST_LOGIN_IPADDRESS, LOGIN_FAIL_COUNT, LOGIN_COUNT, VIEW_ADULT, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$USER_ID."'; ";

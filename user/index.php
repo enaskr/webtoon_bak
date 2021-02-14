@@ -16,7 +16,7 @@
 							<td align="center" style='font-size:15px;color:#000000;'>성명</td><td align="center" style='font-size:15px;color:#000000;'>전화번호</td><td align="center" style='font-size:15px;color:#000000;'>가입일</td>
 						</tr>
 <?php
-	if ( $USER_LEVEL == 99999 ) {
+	if ( $USER_LEVEL >= 99999 ) {
 		$userList = "SELECT MBR_NO, USER_ID, USER_NAME, EMAIL, PHONE, CASE WHEN USER_STATUS='OK' THEN '정상' WHEN USER_STATUS='WAIT' THEN '승인대기' WHEN USER_STATUS='REJECT' THEN '승인거절' WHEN USER_STATUS='APPROVED' THEN '승인완료' END AS STATUS, REGDTIME FROM USER_INFO ORDER BY REGDTIME DESC, USER_ID; ";
 	} else {
 		$userList = "SELECT MBR_NO, USER_ID, USER_NAME, EMAIL, PHONE, CASE WHEN USER_STATUS='OK' THEN '정상' WHEN USER_STATUS='WAIT' THEN '승인대기' WHEN USER_STATUS='REJECT' THEN '승인거절' WHEN USER_STATUS='APPROVED' THEN '승인완료' END AS STATUS, REGDTIME FROM USER_INFO WHERE USER_ID='".$USER_ID."' ORDER BY REGDTIME DESC, USER_ID; ";

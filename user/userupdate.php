@@ -2,7 +2,7 @@
 	include('../lib/config.php');
 	$isSuccess = true;
 
-	if ( $USER_LEVEL == 99999 ) {
+	if ( $USER_LEVEL >= 99999 ) {
 		if ( $_POST["uptMode"] == "PWD" ) {
 			$userList = "UPDATE USER_INFO SET USER_PASSWD='".strtoupper(hash("sha256", $_POST["newuserpassword"]))."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$_POST["userid"]."'; ";
 		} else {

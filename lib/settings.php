@@ -33,7 +33,7 @@
 	if ( $USER_LEVEL >= 99999 ) {
 ?>
 						<tr>
-							<td align="center" style='font-size:15px;color:#000000;width:25%;'>설정명</td><td align="center" style='font-size:15px;color:#000000;width:15%;'>설정값</td><td align="center" style='font-size:15px;color:#000000;width:30%;'>추가값1</td><td align="center" style='font-size:15px;color:#000000;width:30%;'>추가값2</td>
+							<td align="center" style='font-size:15px;color:#000000;width:50%;'>설정명</td><td align="center" style='font-size:15px;color:#000000;width:50%;'>설정값</td>
 						</tr>
 <?php
 		$conf_result = $webtoonDB->query("SELECT CONF_NAME, CONF_VALUE, CONF_ADD1, CONF_ADD2, REGDTIME FROM SERVER_CONFIG;");
@@ -46,17 +46,19 @@
 			echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle>";
 			echo "<input type='text' style='border:none; line-height:30px; width:100%;text-align:center;' name='CONF_VALUE' value='".$conf['CONF_VALUE']."' ".$readonly."></td>\n";
 			echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle>";
+/*
 			echo "<input type='text' style='border:none; line-height:30px; width:100%;text-align:center;' name='CONF_ADD1' value='".$conf['CONF_ADD1']."' ".$readonly."></td>\n";
 			echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle>";
 			echo "<input type='text' style='border:none; line-height:30px; width:80%;text-align:center;' name='CONF_ADD2' value='".$conf['CONF_ADD2']."' ".$readonly.">";
 			echo "<input type='button' name='savebtn' value='S' style='border:none;line-height:30px;width:20%;' onClick='saveSetting(this.form);'></td>\n";
+*/
 			echo "</form></tr>\n";
 		}
 		echo "<form method='post'><tr style='background-color:#f8f8f8'>";
 		echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle><input type='text' style='border:none; line-height:30px; width:100%;text-align:center;' name='CONF_NAME' value=''></td>";
 		echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle><input type='text' style='border:none; line-height:30px; width:100%;text-align:center;' name='CONF_VALUE' value=''></td>";
-		echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle><input type='text' style='border:none; line-height:30px; width:100%;text-align:center;' name='CONF_ADD1' value=''></td>";
-		echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle><input type='text' style='border:none; line-height:30px; width:80%;text-align:center;' name='CONF_ADD2' value=''><input type='button' name='savebtn' value='＋' style='border:none;line-height:30px;width:20%;' onClick='saveSetting(this.form);'></td></form>";
+//		echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle><input type='text' style='border:none; line-height:30px; width:100%;text-align:center;' name='CONF_ADD1' value=''></td>";
+//		echo "<td style='font-size:15px;color:#8000ff;' align=center valign=middle><input type='text' style='border:none; line-height:30px; width:80%;text-align:center;' name='CONF_ADD2' value=''><input type='button' name='savebtn' value='＋' style='border:none;line-height:30px;width:20%;' onClick='saveSetting(this.form);'></td></form>";
 		echo "</tr>\n";
 	} else {
 ?>

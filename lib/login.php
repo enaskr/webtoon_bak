@@ -2,8 +2,14 @@
 	include('./simple_html_dom.php');
 	$userid = $_POST["user"];
 	$userpw = $_POST["pass"];
+	$loginDuration = 60;
 	$webtoonDB = new SQLite3('./webtoon.db');
 	if($webtoonDB->lastErrorCode() == 0){
+		$conf_result = $webtoonDB->query("SELECT CONF_VALUE FROM SERVER_CONFIG WHERE CONF_NAME='login_duration';");
+		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
+			$loginDuration = (int)$config["CONF_VALUE"];
+		}
+
 		if ( $userid !=null && strlen($userid) > 3 && $userpw !=null && strlen($userpw) > 3 ) {
 			$userpassword = strtoupper(hash("sha256", $userpw));
 			$result = $webtoonDB->query("SELECT MBR_NO, USER_ID, LOGIN_COUNT, USER_NAME, EMAIL, PHONE, REGDTIME FROM USER_INFO WHERE USER_ID = '".$userid."' AND USER_PASSWD = '".$userpassword."' AND USER_STATUS IN ('OK','APPROVED') AND USE_YN='Y' LIMIT 1;");
@@ -18,7 +24,7 @@
 				define('KEY_128', substr(KEY,0,128/8));
 				define('KEY_256', substr(KEY,0,256/8));
 				$mbrid = openssl_encrypt($userMbrno."|".date("Ymd", time())."|".$userpassword, 'AES-256-CBC', KEY_256, 0, KEY_128);
-				setcookie("MBRID", $mbrid, time()+3600, "/");
+				setcookie("MBRID", $mbrid, time()+($loginDuration*60), "/");
 				Header("Location:../index.php"); 
 			}
 			if ( $userMbrno==null || strlen($userMbrno) == 0) {

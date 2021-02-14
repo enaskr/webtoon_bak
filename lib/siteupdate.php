@@ -1,6 +1,6 @@
 <?php
 	include('../lib/config.php');
-	if ( $USER_LEVEL == 99999 ) {
+	if ( $USER_LEVEL >= 99999 ) {
 		$conf_sql = "SELECT SITE_ID, SITE_NAME, SERVER_PATH FROM SITE_INFO WHERE SITE_ID='".$_POST["SITE_ID"]."';";
 		$conf_result = $webtoonDB->query($conf_sql);
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){

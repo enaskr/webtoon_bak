@@ -8,6 +8,7 @@
 	$isLogin = false;
 	$viewAdultSite = false;
 	$viewAdultUser = false;
+	$loginDuration = 60;
 	$config = array();
 	$USER_LEVEL = 0;
 	$USER_ID = "";
@@ -21,7 +22,8 @@
 			$config_add2[$conf["CONF_NAME"]] = $conf['CONF_ADD2'];
 		}
 		if ( $config["view_adult"] == "Y" ) $viewAdultSite = true;
-//		$config["view_adult"] / $config["max_list"] / $config["try_count"] / $config["login_view"] / $config["search_seq"]
+		$loginDuration = (int)$config["login_duration"];
+//		$config["view_adult"] / $config["max_list"] / $config["try_count"] / $config["login_view"] / $config["search_seq"] / $config["login_duration"]
 
 		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, MAIN_VIEW, ORDER_NUM, UPDATE_YN FROM SITE_INFO WHERE SERVER_PATH = '".$lastpath."' AND USE_YN='Y' LIMIT 1;";
 		$conf_result = $webtoonDB->query($sql);
@@ -83,7 +85,7 @@
 				if ( $useLevel <= $USER_LEVEL ) $canView = true;
 
 				$mbrid = openssl_encrypt($MBR_NO."|".date("Ymd", time())."|".$mbr_pass, 'AES-256-CBC', KEY_256, 0, KEY_128);
-				setcookie("MBRID", $mbrid, time()+3600, "/");  // 3600초 = 60초 * 60 분 * 1시간
+				setcookie("MBRID", $mbrid, time()+($loginDuration*60), "/");  // 3600초 = 60초 * 60 분 * 1시간
 			}
 			if ( $isLogin != true ) {
 				unset($_COOKIE["MBRID"]);

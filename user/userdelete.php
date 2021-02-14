@@ -3,7 +3,7 @@
 	$http_path = (str_replace(basename($_SERVER["PHP_SELF"]),"",$_SERVER["PHP_SELF"]));
 	include($server_path.'../lib/config.php');
 
-	if ( $USER_LEVEL == 99999 ) {
+	if ( $USER_LEVEL >= 99999 ) {
 		$userList = "DELETE FROM USER_INFO WHERE USER_ID = '".$_POST["userid"]."'; ";
 		$webtoonDB->exec($userList)
 ?>
