@@ -2384,6 +2384,16 @@ function getRealClientIp() {
     return $ipaddress;
 }
 
+function removeNode($source, $selector)
+{
+    foreach ($source->find($selector) as $node)
+    {
+        $node->outertext = '';
+    }
+    $source->load($source->save());
+	return $source;
+}
+
 function get_http_header_as_array($rawheader){
     $header_array = array();
     $header_rows = explode("\n",$rawheader);

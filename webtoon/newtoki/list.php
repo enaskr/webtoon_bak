@@ -56,17 +56,10 @@ $target_episode = array();
 foreach($get_html_contents->find('li.list-item') as $e){
 	$f = str_get_html($e->innertext);
 	foreach($f->find('a.item-subject') as $g){
-		$newtitle = trim(strip_tags($g));
+		$h = str_get_html($g->innertext);
+		$newtitle = trim(strip_tags(removeNode($h, 'span')));
 		$targeturl = str_replace("&amp;spage=1","",$g->href);
 		$epiparse = explode('/' , $targeturl);
-		//$epiurl = str_replace($siteUrl,"",$siteUrl.str_replace("{toondtlid}",$epiparse[4],$viewUrl));
-		$strTok =explode(' ' , $newtitle);
-		$cnt = count($strTok);
-		$newtitle = "";
-		for($i = 1 ; $i < $cnt-1 ; $i++){
-			$newtitle = $newtitle.$strTok[$i]." ";
-		}
-		$newtitle = trim($newtitle);
 
 		$isAlreadyView = "SELECT UV.MBR_NO AS MBR_NO, UV.SITE_ID AS SITE_ID, UV.TOON_ID AS TOON_ID, UVD.VIEW_ID AS VIEW_ID, UVD.UPTDTIME AS UPTDTIME FROM USER_VIEW UV, USER_VIEW_DTL UVD ";
 		$isAlreadyView = $isAlreadyView." WHERE UV.MBR_NO = '".$MBR_NO."' AND UV.SITE_ID = '".$siteId."' AND UV.TOON_ID = '".$_GET['wr_id']."' AND UV.USE_YN='Y' ";
