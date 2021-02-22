@@ -25,7 +25,7 @@
 <div id='container'>
 	<div class='item'>
 		<dl>
-			<dt><a href="./index.php">내가 본 목록 (전체)</a></dt>
+			<dt><a href="<?= $homeurl ?>user/index.php">내가 본 목록 (전체)</a></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>

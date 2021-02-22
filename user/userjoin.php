@@ -14,7 +14,7 @@
 	?>
 	<script type="text/javascript">
 		alert("비정상적인 경로로 접근하였습니다.");
-		location.replace("<?php echo $homeurl; ?>");
+		location.replace("<?= $homeurl ?>");
 	</script>
 	<?php
 			return;
@@ -30,14 +30,14 @@
 	?>
 	<script type="text/javascript">
 		alert("회원정보를 정상적으로 등록하였습니다.");
-		location.replace("<?php echo $homeurl; ?>");
+		location.replace("<?= $homeurl ?>");
 	</script>
 	<?php
 			} else {
 	?>
 	<script type="text/javascript">
 		alert("회원정보 등록에 실패했습니다.");
-		location.replace("<?php echo $homeurl; ?>");
+		location.replace("<?= $homeurl ?>");
 	</script>
 	<?php
 			}
@@ -45,7 +45,7 @@
 	?>
 	<script type="text/javascript">
 		alert("이미 존재하는 회원입니다.");
-		location.replace("<?php echo $homeurl; ?>");
+		location.replace("<?= $homeurl ?>");
 	</script>
 	<?php
 	}

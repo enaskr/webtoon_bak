@@ -1,11 +1,4 @@
 <?php
-	if ( $server_path == null || strlen($server_path)==0 ) {
-		$server_path = str_replace(basename(__FILE__), "", str_replace(basename(__FILE__), "", realpath(__FILE__)));
-	}
-	if ( $http_path == null || strlen($http_path)==0 ) {
-		$http_path = str_replace(basename($_SERVER["PHP_SELF"]),"",$_SERVER["PHP_SELF"]);
-	}
-
 	include('../../lib/config.php');
 	$epiurl = str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl);
 

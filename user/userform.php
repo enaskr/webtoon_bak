@@ -65,7 +65,7 @@
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
-						<form name="userForm" method="post" action="./userjoin.php" id="userForm" onSubmit="chkForm(this);return false;">
+						<form name="userForm" method="post" action="<?= $homeurl ?>user/userjoin.php" id="userForm" onSubmit="chkForm(this);return false;">
 						<tr style='background-color:#f8f8f8' height='50' align='center'><td width='30%'>회원번호</td><td><input style='border:none; line-height:48px; width:100%;text-align:center;' type='text' name='mbr_no' value="<?php echo $mbr_no; ?>" readOnly></td></tr>
 						<tr style='background-color:#f8f8f8' height='50' align='center'><td>아이디<font color="red">*</font></td><td><input style='border:none; line-height:48px; width:70%;' type='text' name='userid' onChange='canJoin=false;'><input style='border:none; line-height:48px; width:30%;' type='button' value='중복확인' onClick='chkUserID(this.form);'></td></tr>
 						<tr style='background-color:#f8f8f8' height='50' align='center'><td>비밀번호<font color="red">*</font></td><td><input style='border:none; line-height:48px; width:100%;' type='password' name='userpassword'></td></tr>

@@ -5,7 +5,7 @@
 <div id='container'>
 	<div class='item'>
 		<dl>
-			<dt><a href="../">회원 목록</a></dt>
+			<dt><a href="<?= $homeurl ?>user/">회원 목록</a></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>

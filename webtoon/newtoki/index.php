@@ -15,13 +15,7 @@
 <?php
 		$url = $siteUrl.$searchUrl."?".str_replace("{keyword}",$keywordstr,$searchParam);
 		echo "<script type='text/javascript'>console.log('$url');</script>";
-
-		$ch = curl_init(); //curl 로딩
-		curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-		curl_setopt($ch, CURLOPT_TIMEOUT,3000);
-		$result = curl_exec($ch); // curl 실행 및 결과값 저장
-		curl_close ($ch); // curl 종료
+		$result = getCurlDom($url, (int)$config["try_count"]);
 		$get_html_contents = str_get_html($result);
 
 		if ( $get_html_contents == null || strlen($get_html_contents) < 10000 ) {  // 사이트 접속 실패 시 주소 업데이트 페이지로 자동 이동
@@ -99,12 +93,7 @@
 			for($p = 1; $p <= 1; $p++) {
 				$url = $siteUrl.str_replace("{page}",$p,$recentUrl)."?".$recentParam;
 				echo "<script type='text/javascript'>console.log('$url');</script>";
-				$ch = curl_init(); //curl 로딩
-				curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-				curl_setopt($ch, CURLOPT_TIMEOUT,3000);
-				$result = curl_exec($ch); // curl 실행 및 결과값 저장
-				curl_close ($ch); // curl 종료
+				$result = getCurlDom($url, (int)$config["try_count"]);
 				$get_html_contents = str_get_html($result);
 
 				if ( $get_html_contents == null || strlen($get_html_contents) < 10000 ) {
@@ -182,12 +171,7 @@
 			for($p = 1; $p <= 4; $p++) {
 				$url = $siteUrl.str_replace("{page}",$p,$endedUrl)."?".$endedParam;
 				echo "<script type='text/javascript'>console.log('$url');</script>";
-				$ch = curl_init(); //curl 로딩
-				curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-				curl_setopt($ch, CURLOPT_TIMEOUT,3000);
-				$result = curl_exec($ch); // curl 실행 및 결과값 저장
-				curl_close ($ch); // curl 종료
+				$result = getCurlDom($url, (int)$config["try_count"]);
 				$get_html_contents = str_get_html($result);
 
 				if ( $get_html_contents == null || strlen($get_html_contents) < 10000 ) {

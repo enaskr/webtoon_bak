@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Wavve 로그인 (with 프로필)</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        var w_id = "";          // 자동 로그인 아이디
+        var w_password = "";    // 자동 로그인 비밀번호
+        var w_profileid = "";   // 자동 로그인 프로필번호(무료회원 또는 베이직 요금제 회원은 의미 없음)
+        var is_auto = false;    // 자동 로그인 여부 : true, false
+
+
+
+        $(function(){
+            $("#id").val(w_id);
+            $("#password").val(w_password);
+            $("#auto_profileid").val(w_profileid);
+
+            if(is_auto === true){
+                login();
+            }
+
+        });
+
+
+        function login(){
+            var id = $("#id").val();
+            var password = $("#password").val();
+
+            if(!id){ alert("아이디를 입력하세요."); return;}
+            if(!password){ alert("비밀번호를 입력하세요."); return;}
+
+            $("#profiles").empty();
+            $("#result").text("");
+            $("#credential").val("");
+
+            $.ajax({
+                url: "https://apis.wavve.com/login?apikey=E5F3E0D30947AA5440556471321BB6D9",
+                type: "POST",
+                data: {"id":id, "password":password, "type":"general"},
+                success: function (datas) {
+
+                    if(datas.needselectprofile == "y"){
+                        profileList(datas.credential);
+                    }
+                    else{
+                        $("#credential").val(datas.credential);
+                        $("#result").text(JSON.stringify(datas, null, "\t"));
+                    }
+
+
+                },
+                error: function (error) {
+                    console.log('error!!');
+                    $("#result").text(JSON.stringify(error, null, "\t"));
+                }
+            });
+        }
+
+
+        function profileList(credential){
+            if(!credential){
+                alert("[프로필목록] credential 값이 없습니다.");
+                return;
+            }
+
+            $("#profiles").empty();
+            $.ajax({
+                url: "https://apis.wavve.com/profiles?limit=10&offset=0&orderby=new&apikey=E5F3E0D30947AA5440556471321BB6D9&device=pc&drm=wm&partner=pooq&pooqzone=none&region=kor&targetage=all",
+                type: "get",
+                data: {"credential":credential},
+                success: function (datas) {
+                    console.log(datas);
+                    $("#profiles").append("<p>[프로필을 선택하세요.]</p>");
+                    datas.list.forEach(function (item) {
+                        $("#profiles").append("<div>profileid : "+item.profileid+" <button type='button' onclick='profileSelect(\""+credential+"\", \""+item.profileid+"\")'>"+item.profilename+"</button></div>");
+                    });
+
+                    var profileid = $("#auto_profileid").val();
+                    if(profileid){
+                        $("#profiles").append("<p>** 자동 선택 프로필 : "+profileid+" **</p>");
+                        profileSelect(credential, profileid);
+                    }
+
+                },
+                error: function (error) {
+                    console.log('error!!');
+                    $("#result").text(JSON.stringify(error, null, "\t"));
+                }
+            });
+        }
+
+        function profileSelect(credential, profileid){
+            if(!credential){
+                alert("[프로필선택] credential 값이 없습니다.");
+                return;
+            }
+
+            if(!profileid){
+                alert("[프로필선택] profileid 값이 없습니다.");
+                return;
+            }
+
+
+            $.ajax({
+                url: "https://apis.wavve.com/login?apikey=E5F3E0D30947AA5440556471321BB6D9",
+                type: "post",
+                data: {"id":credential, "type":"credential", "profile":profileid},
+                success: function (datas) {
+                    console.log(datas);
+                    $("#credential").val(datas.credential);
+                    $("#result").text(JSON.stringify(datas, null, "\t"));
+                },
+                error: function (error) {
+                    console.log('error!!');
+                    $("#result").text(JSON.stringify(error, null, "\t"));
+                }
+            });
+        }
+
+        function copyTo() {
+            var copyText =  document.getElementById("credential");
+
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+
+            document.execCommand("copy");
+
+            alert("클립보드에 복사했습니다. [" + copyText.value + "]");
+        }
+
+    </script>
+</head>
+<body>
+<h3>[Wavve 로그인 (with 프로필)]</h3>
+<div>아이디 : <input type="text" id="id" value=""></div>
+<div>패스워드 : <input type="password" id="password" value=""></div>
+<div>프로필 자동 : <input type="text" id="auto_profileid" value=""></div>
+<p><button id="login" onclick="login()">로그인</button></p>
+<div id="profiles"></div>
+<hr>
+<h3>[결과]</h3>
+<div>credential : <input type="text" id="credential" value="" readonly><button onclick="copyTo()">복사하기</button></div>
+<pre id="result"></pre>
+</body>
+</html>

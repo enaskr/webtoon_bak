@@ -6,21 +6,7 @@
 	$get_images = array();
 	$url = $siteUrl.$epiurl; //주소셋팅
 	echo "<script type='text/javascript'>console.log('$url');</script>";
-	$ch = curl_init(); //curl 로딩
-	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36');
-	curl_setopt($ch, CURLOPT_TIMEOUT,3000);
-	$result = curl_exec($ch); // curl 실행 및 결과값 저장
-	for($html_c = 0; $html_c < (int)$config["try_count"]; $html_c++){
-		if(strlen($result) > 10000){
-			break;
-		} else {
-			$result = curl_exec($ch);
-		}
-	}
-	curl_close ($ch); // curl 종료
-
+	$result = getCurlDom($url, (int)$config["try_count"]);
 	$html_arr = explode("<title>", $result);
 	$get_html_contents = str_get_html($result);
 

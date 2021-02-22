@@ -5,12 +5,7 @@
 <?php
 $url = $siteUrl.$listUrl."?".str_replace("{toonid}",$_GET["wr_id"],$listParam);
 echo "<script type='text/javascript'>console.log('$url');</script>";
-$ch = curl_init(); //curl 로딩
-curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-curl_setopt($ch, CURLOPT_TIMEOUT,3000);
-$result = curl_exec($ch); // curl 실행 및 결과값 저장
-curl_close ($ch); // curl 종료
+$result = getCurlDom($url, (int)$config["try_count"]);
 $get_html_contents = str_get_html($result);
 
 foreach($get_html_contents->find('meta') as $e){
