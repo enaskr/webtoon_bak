@@ -137,7 +137,13 @@
 		foreach($f->find('img') as $g){
 			if($g->getAttribute("data-src") != null){
 				$get_images = $g->getAttribute("data-src");
-				echo "<img src='".$get_images."' width='100%'><br>";
+
+				if(MobileCheck() == "Mobile"){
+			        echo "<img src='".$get_images."' width='100%'><br>";
+			    }
+			    else {
+			        echo "<img src='".$get_images."' width='33%'><br>";
+			    }
 			}
 		}
 	}

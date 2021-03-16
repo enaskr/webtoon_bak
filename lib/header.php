@@ -1,5 +1,17 @@
 <?php @ob_start();?>
 <?php
+    function MobileCheck() {
+        $ary_m = array("iPhone","iPod","IPad","Android","Blackberry","SymbianOS|SCH-M\d+","Opera Mini","Windows CE","Nokia","Sony","Samsung","LGTelecom","SKT","Mobile","Phone","LG","android");
+  
+        for($i=0; $i<count($ary_m); $i++){
+            if(preg_match("/$ary_m[$i]/i", strtolower($_SERVER['HTTP_USER_AGENT']))) {
+                return "Mobile";
+                break;
+            }
+        }
+        return "PC";
+    }
+    
 	$strtitle = "";
 	$uri= $_SERVER['REQUEST_URI']; //uri를 구합니다.
 
