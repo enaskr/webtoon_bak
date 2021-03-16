@@ -299,7 +299,14 @@
 			$images = str_replace(substr($images, 0,21), $siteUrl, $images);
 		}
 ?>
-						<?php echo "<img src='".$images."' width='100%'><br>"; ?>
+						<?php 
+						    if(MobileCheck() == "Mobile"){
+						        echo "<img src='".$images."' width='100%'><br>"; 
+						    }
+						    else {
+						        echo "<img src='".$images."' width='33%'><br>"; 
+						    }
+						?>
 <?php
 	}
 ?>

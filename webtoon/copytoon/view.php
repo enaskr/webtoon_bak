@@ -162,7 +162,13 @@
 		foreach($f->find('img') as $g){
 			if($g->src != null){
 				$get_images = $g->src;
-				echo "<img src='".$get_images."' width='100%'><br>";
+				
+				if(MobileCheck() == "Mobile"){
+        	        echo "<img src='".$get_images."' width='100%'><br>";
+        	    }
+        	    else {
+        	        echo "<img src='".$get_images."' width='33%'><br>";
+        	    }
 			}
 		}
 	}

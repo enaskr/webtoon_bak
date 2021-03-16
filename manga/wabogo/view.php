@@ -156,7 +156,12 @@
 	foreach($f->find('img') as $e){
 		$get_images = $e->src;
 		if ( startsWith($get_images, "http") == false ) $get_images = $siteUrl.$get_images;
-		echo "<img src='".$get_images."' width='100%'><br>";
+        if(MobileCheck() == "Mobile"){
+	        echo "<img src='".$get_images."' width='100%'><br>";
+	    }
+	    else {
+	        echo "<img src='".$get_images."' width='33%'><br>";
+	    }
 	}
 ?>
 					<tr style='background-color:#f8f8f8'>

@@ -236,7 +236,12 @@
 			foreach($get_images as $images){
 				echo "<tr style='background-color:#f8f8f8'>";
 				echo "<td colspan='5' style='margin:0;padding:0;width:100%;font-size:16px;color:#8000ff;' align=center valign=middle>";
-				echo "<img src='".$images."' width='100%'></td></tr>";
+                if(MobileCheck() == "Mobile"){
+        	        echo "<img src='".$images."' width='100%'></td></tr>";
+        	    }
+        	    else {
+        	        echo "<img src='".$images."' width='33%'></td></tr>";
+        	    }
 			}
 		?>
 					<tr style='background-color:#f8f8f8'>
