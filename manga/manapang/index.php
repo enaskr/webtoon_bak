@@ -36,6 +36,7 @@ if($keywordstr != null){
 		$f = str_get_html($e->innertext);
 		foreach($f->find('div.post') as $g) {
 			$img_link = $g->getAttribute("style");
+			$img_link = str_replace("background:url('","",$img_link);
 			$img_link = str_replace("center center no-repeat; background-size:cover;","",$img_link);
 			$img_link = str_replace("url('/web_cdn/img/mana/no-img.jpg')","",$img_link);
 			$img_link = str_replace("'),","",$img_link);
@@ -112,6 +113,7 @@ if($keywordstr != null){
 			$f = str_get_html($e->innertext);
 			foreach($f->find('div.post') as $g) {
 				$img_link = $g->getAttribute("style");
+				$img_link = str_replace("background:url('","",$img_link);
 				$img_link = str_replace("center center no-repeat; background-size:cover;","",$img_link);
 				$img_link = str_replace("url('/web_cdn/img/mana/no-img.jpg')","",$img_link);
 				$img_link = str_replace("'),","",$img_link);
@@ -185,6 +187,7 @@ if($keywordstr != null){
 			$f = str_get_html($e->innertext);
 			foreach($f->find('div.post') as $g) {
 				$img_link = $g->getAttribute("style");
+				$img_link = str_replace("background:url('","",$img_link);
 				$img_link = str_replace("center center no-repeat; background-size:cover;","",$img_link);
 				$img_link = str_replace("url('/web_cdn/img/mana/no-img.jpg')","",$img_link);
 				$img_link = str_replace("'),","",$img_link);

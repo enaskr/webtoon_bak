@@ -240,7 +240,7 @@
         	        echo "<img src='".$images."' width='100%'></td></tr>";
         	    }
         	    else {
-        	        echo "<img src='".$images."' width='33%'></td></tr>";
+        	        echo "<img src='".$images."' max-width='300px'></td></tr>";
         	    }
 			}
 		?>
