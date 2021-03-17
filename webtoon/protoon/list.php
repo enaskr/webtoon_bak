@@ -64,7 +64,7 @@ do {
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 					<tr style='background-color:#f8f8f8'>
-						<td style='width:100%;font-size:16px;color:#8000ff;' align=center valign=middle><?php echo "<img src='".$thumb."' style='float:left; max-height:154px; margin-right:20px;'>"; ?></td>
+						<td style='width:100%;font-size:16px;color:#8000ff;' align=center valign=middle><?php echo "<img src='".$thumb."' style='max-width:100%;'>"; ?></td>
 					</tr>
 					<tr style='background-color:#f8f8f8'>
 						<td style='width:100%;font-size:16px;color:#8000ff;' align=center valign=middle><?php echo $contents; ?></td>
