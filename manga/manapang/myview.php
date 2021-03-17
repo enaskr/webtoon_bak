@@ -67,7 +67,15 @@
 		echo "<input type='hidden' name='toonid".$idx."' id='toonid".$idx."' value='".$toonid."'>";
 		echo "<input type='hidden' name='epiid".$idx."' id='epiid".$idx."' value='".$epiid."'>";
 		echo "<tr style='background-color:#f8f8f8'>";
+<<<<<<< HEAD
 		echo "<td style='word-wrap:break-word;height:50px;' valign=middle><a style='margin:0px;padding:0px;width:100%;' href='list.php?title=".urlencode($toontitle)."&wr_id=".$toonid."'><img src='".$toonthumb."' style='height:50px;max-width:20%;float:left;'><span style='margin:0px;padding:0px;line-height:16px;height:32px;font-size:14px;overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;width:80%;'>".$epititle;
+=======
+<<<<<<< HEAD
+		echo "<td style='word-wrap:break-word;height:50px;' valign=middle><a style='margin:0px;padding:0px;width:100%;' href='list.php?title=".urlencode($toontitle)."&wr_id=".$toonid."'><img src='".$toonthumb."' style='height:50px;max-width:20%;float:left;'><span style='margin:0px;padding:0px;line-height:16px;height:32px;font-size:14px;overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;width:80%;'>".$epititle;
+=======
+		echo "<td style='word-wrap:break-word;height:50px;' valign=middle><a style='margin:0px;padding:0px;width:100%;' href='list.php?title=".urlencode($toontitle)."&wr_id=".$toonid."'><img src='".$lastthumb."' style='height:50px;max-width:20%;float:left;'><span style='margin:0px;padding:0px;line-height:16px;height:32px;font-size:14px;overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;width:80%;'>".$epititle;
+>>>>>>> c7b13dd13d9235321d469d9531b7a6b14c7d13de
+>>>>>>> c5e92261207aaec87caf67300baef8e3f5360e54
 		echo "</span><span style='font-size:12px;margin:0px;padding:0px;line-height:12px;width:80%;'>(".$uptdtime.")</span></a></td> ";
 		echo "<td id='toon".$idx."' style='width:40px;font-size:16px;color=#ff3232;' align=center valign=middle><a style='margin:0px;padding:0px;' href='javascript:void(0);' onClick=\"checkRecent('toon".$idx."', '".$toontitle."', '".$toonid."', '".$epiid."', '".$epitype[1]."');\">확인</a></td>";
 		echo "<td style='width:40px;font-size:16px;color=#ff3232;' align=center valign=middle><a style='margin:0px;padding:0px;' href='../../lib/remove_view.php?siteid=".$siteId."&toonid=".$toonid."'>삭제</a></td>";
