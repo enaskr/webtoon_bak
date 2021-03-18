@@ -167,7 +167,7 @@
         	        echo "<img src='".$get_images."' width='100%'><br>";
         	    }
         	    else {
-        	        echo "<img src='".$get_images."' width='33%'><br>";
+        	        echo "<img src='".$get_images."' max-width='300px'><br>";
         	    }
 			}
 		}

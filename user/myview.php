@@ -62,9 +62,9 @@
 		$epititle = $row["VIEW_TITLE"];
 		$uptdtime = $row["UPTDTIME"];
 
-		echo "<tr style='background-color:#f8f8f8'>";
+		echo "<tr style='width=100%;background-color:#f8f8f8'>";
 		echo "<td style='width:65px;' align=center valign=middle><a style='font-size:13px;color:#8000ff;margin:0px;padding:0px;' href='".$http_path."../".$siteType."/".$pathname."/myview.php'>".$toonsite."</a></td>";
-		echo "<td style='word-wrap:break-word;height:50px;' valign=middle><a style='margin:0px;padding:0px;' href='".$http_path."../".$siteType."/".$pathname."/list.php?title=".urlencode($toontitle)."&wr_id=".$toonid."'><img src='".$lastthumb."' style='height:50px;width:20%;float:left;'><span style='margin:0px;padding:0px;line-height:16px;height:32px;font-size:14px;overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;width:80%;'>".$epititle;
+		echo "<td style='word-wrap:break-word;height:50px;' valign=middle><a style='margin:0px;padding:0px;width:100%;' href='".$http_path."../".$siteType."/".$pathname."/list.php?title=".urlencode($toontitle)."&wr_id=".$toonid."'><img src='".$toonthumb."' style='height:50px;max-width:20%;float:left;'><span style='margin:0px;padding:0px;line-height:16px;height:32px;font-size:14px;overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient: vertical;width:80%;'>".$epititle;
 		echo "</span><span style='font-size:12px;margin:0px;padding:0px;line-height:12px;width:80%;'>(".$uptdtime.")</span></a></td> ";
 		echo "<td id='toon".$idx."' style='width:40px;font-size:16px;color=#ff3232;' align=center valign=middle><a style='margin:0px;padding:0px;' href='javascript:void(0);' onClick=\"checkRecent('".$siteType."/".$pathname."','toon".$idx."', '".$toontitle."', '".$toonid."', '".$epiid."');\">확인</a></td>";
 		echo "<td style='width:40px;font-size:16px;color=#ff3232;' align=center valign=middle><a style='margin:0px;padding:0px;' href='../lib/remove_view.php?siteid=".$siteId."&toonid=".$toonid."'>삭제</a></td>";

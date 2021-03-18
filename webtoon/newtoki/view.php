@@ -304,7 +304,7 @@
 						        echo "<img src='".$images."' width='100%'><br>"; 
 						    }
 						    else {
-						        echo "<img src='".$images."' width='33%'><br>"; 
+						        echo "<img src='".$images."' max-width='300px'><br>"; 
 						    }
 						?>
 <?php
