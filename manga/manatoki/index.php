@@ -202,12 +202,12 @@
 							$f = str_get_html($e->innertext);
 							foreach($f->find('img') as $g){
 								$img_link = $g->src;
-								if ( substr($img_link, 0,16) == "https://manatoki" && ( substr($img_link, 19,3) == "com" || substr($img_link, 19,3) == "net" )) {
-									$img_link = str_replace(substr($img_link, 0,23), $base_url, $img_link);
-								}
-								if ( substr($img_link, 0,15) == "https://newtoki"  && ( substr($img_link, 18,3) == "com" || substr($img_link, 18,3) == "net" )) {
-									$img_link = str_replace(substr($img_link, 0,22), $base_url, $img_link);
-								}
+								// if ( substr($img_link, 0,16) == "https://manatoki" && ( substr($img_link, 19,3) == "com" || substr($img_link, 19,3) == "net" )) {
+								// 	$img_link = str_replace(substr($img_link, 0,23), $base_url, $img_link);
+								// }
+								// if ( substr($img_link, 0,15) == "https://newtoki"  && ( substr($img_link, 18,3) == "com" || substr($img_link, 18,3) == "net" )) {
+								// 	$img_link = str_replace(substr($img_link, 0,22), $base_url, $img_link);
+								// }
 							}
 							foreach($f->find('a') as $g){
 								$target_link = $g->href;
