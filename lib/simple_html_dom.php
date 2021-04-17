@@ -42,7 +42,7 @@ define('HDOM_INFO_ENDSPACE', 7);
 defined('DEFAULT_TARGET_CHARSET') || define('DEFAULT_TARGET_CHARSET', 'UTF-8');
 defined('DEFAULT_BR_TEXT') || define('DEFAULT_BR_TEXT', "\r\n");
 defined('DEFAULT_SPAN_TEXT') || define('DEFAULT_SPAN_TEXT', ' ');
-defined('MAX_FILE_SIZE') || define('MAX_FILE_SIZE', 9999999);
+defined('MAX_FILE_SIZE') || define('MAX_FILE_SIZE', 99999999);
 define('HDOM_SMARTY_AS_TEXT', 1);
 
 function file_get_html(
@@ -2430,7 +2430,7 @@ function getCurlDom($url, $try_cnt){
 	$ch = curl_init(); //curl 로딩
 	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36');
+	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36');
 	curl_setopt($ch, CURLOPT_TIMEOUT,3000);
 	$result = curl_exec($ch); // curl 실행 및 결과값 저장
 	for($html_c = 0; $html_c < (int)$try_cnt; $html_c++){
@@ -2449,7 +2449,7 @@ function getCurl($url, $try_cnt){
 	$ch = curl_init(); //curl 로딩
 	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
-	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36');
+	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36');
 	curl_setopt($ch, CURLOPT_TIMEOUT,3000);
 	$result = curl_exec($ch); // curl 실행 및 결과값 저장
 	for($html_c = 0; $html_c < (int)$try_cnt; $html_c++){

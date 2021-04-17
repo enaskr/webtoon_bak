@@ -44,11 +44,13 @@
 			}
 		}
 	}
+	$link = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($next_epi);
+	$link2 = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($_GET["ws_id"]);
 	if ( $next_epi != null && strlen($next_epi) > 0 ) {
-		echo "Y";
+		echo "Y|".$link;
 //		echo "{result='Y', link='".$link."'}";
 	} else {
-		echo "N";
+		echo "N|".$link2;
 //		echo "{result='N', link=''}";
 	}
 ?>

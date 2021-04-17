@@ -36,9 +36,11 @@
 		}
 	}
 
+	$link = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($next_epi[1]);
+	$link2 = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($_GET["ws_id"]);
 	if ( $next_epi != null && strlen($next_epi[1]) > 0 ) {
-		echo "Y";
+		echo "Y|".$link;
 	} else {
-		echo "N";
+		echo "N|".$link2;
 	}
 ?>

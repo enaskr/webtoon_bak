@@ -2,6 +2,7 @@
 	include('../../lib/config.php');
 	include($homepath.'lib/header.php');
 	$epiurl = str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl);
+	$referrer = $_SERVER['HTTP_REFERER'];
 
 	$get_images = array();
 	$url = $siteUrl.$epiurl; //주소셋팅
@@ -221,7 +222,7 @@
 			$webtoonDB->exec($sql_view);
 		} else {
 			$sql_view = "UPDATE 'USER_VIEW' SET UPTDTIME = '".$thisTime."' ";
-			if ( $_SESSION["THUMB"]!=null && strlen($_SESSION["THUMB"])>0 ) {
+			if ( $_SESSION["THUMB"]!=null && strlen($_SESSION["THUMB"])>0 && strpos($referrer, "list.php")!==false ) {
 				$sql_view = $sql_view.", TOON_THUMBNAIL = '".$_SESSION["THUMB"]."' ";
 			}
 			$sql_view = $sql_view."WHERE MBR_NO = '".$MBR_NO."' AND SITE_ID = '".$siteId."' AND TOON_ID = '".$_GET['wr_id']."' AND USE_YN = 'Y';";
@@ -299,14 +300,7 @@
 			$images = str_replace(substr($images, 0,21), $siteUrl, $images);
 		}
 ?>
-						<?php 
-						    if(MobileCheck() == "Mobile"){
-						        echo "<img src='".$images."' width='100%'><br>"; 
-						    }
-						    else {
-						        echo "<img src='".$images."' width='33%'><br>"; 
-						    }
-						?>
+						<?php echo "<img src='".$images."' width='100%'><br>"; ?>
 <?php
 	}
 ?>

@@ -33,11 +33,13 @@
 		$nexturl = $nextparse[4];
 		break;
 	}
+	$link = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($nexturl);
+	$link2 = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($_GET["ws_id"]);
 	if ( $nexturl != null && strlen($nexturl) > 0 ) {
-		echo "Y";
+		echo "Y|".$link;
 //		echo "{result='Y', link='".$link."'}";
 	} else {
-		echo "N";
+		echo "N|".$link2;
 //		echo "{result='N', link=''}";
 	}
 ?>

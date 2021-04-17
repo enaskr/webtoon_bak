@@ -127,7 +127,7 @@
 			$webtoonDB->exec($sql_view);
 		} else {
 			$sql_view = "UPDATE 'USER_VIEW' SET UPTDTIME = '".$thisTime."' ";
-			if ( $_SESSION["THUMB"]!=null && strlen($_SESSION["THUMB"])>0 ) {
+			if ( $_SESSION["THUMB"]!=null && strlen($_SESSION["THUMB"])>0 && strpos($referrer, "list.php")!==false  ) {
 				$sql_view = $sql_view.", TOON_THUMBNAIL = '".$_SESSION["THUMB"]."' ";
 			}
 			$sql_view = $sql_view."WHERE MBR_NO = '".$MBR_NO."' AND SITE_ID = '".$siteId."' AND TOON_ID = '".$_GET['wr_id']."' AND USE_YN = 'Y';";
@@ -163,13 +163,7 @@
 	foreach($f->find('img') as $e){
 		$get_images = $e->src;
 		if ( startsWith($get_images, "http") == false ) $get_images = $siteUrl.$get_images;
-		
-		if(MobileCheck() == "Mobile"){
-	        echo "<img src='".$get_images."' width='100%'><br>";
-	    }
-	    else {
-	        echo "<img src='".$get_images."' width='33%'><br>";
-	    }
+		echo "<img src='".$get_images."' width='100%'><br>";
 	}
 ?>
 					<tr style='background-color:#f8f8f8'>

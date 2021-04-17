@@ -3,8 +3,16 @@
 	include($homepath.'lib/header.php');
 ?>
 <?php
+$reqTitle=$_GET["title"];
 $url = $siteUrl.$listUrl."?".str_replace("{toonid}",$_GET["wr_id"],$listParam);
 echo "<script type='text/javascript'>console.log('$url');</script>";
+?>
+<div id='container'>
+	<div class='item'>
+		<dl>
+			<dt><a href='<?php echo $url; ?>'><?php echo $reqTitle; ?></a></dt>
+<?php
+try {
 $result = getCurlDom($url, (int)$config["try_count"]);
 $get_html_contents = str_get_html($result);
 
@@ -29,15 +37,11 @@ $_SESSION['THUMB'] = $thumburl;
 setcookie("THUMB", $thumburl, time()+1800, "/");
 echo "<script type='text/javascript'>console.log('THUMB=".$thumburl."');</script>";
 ?>
-<div id='container'>
-	<div class='item'>
-		<dl>
-			<dt><?php echo $title; ?></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
 					<tr style='background-color:#f8f8f8'>
-						<td style='width:100%;font-size:16px;color:#8000ff;' align=center valign=middle><img src='<?php echo $thumburl; ?>' style='width:100%;max-height:200px;'></td>
+						<td style='width:100%;font-size:16px;color:#8000ff;' align=center valign=middle><img src='<?php echo $thumburl; ?>' style='max-width:100%;'></td>
 					</tr>
 					<tr style='background-color:#f8f8f8'>
 						<td style='width:100%;font-size:16px;color:#8000ff;' align=center valign=middle><?php echo $contents; ?></td>
@@ -74,6 +78,10 @@ foreach($get_html_contents->find('li.list-item') as $e){
 	}			
 }
 
+} catch(Exception $e) {
+	$s = $e->getMessage() . ' (오류코드:' . $e->getCode() . ')';
+	echo $s;
+}
 ?>
 						</table>
 					</div>

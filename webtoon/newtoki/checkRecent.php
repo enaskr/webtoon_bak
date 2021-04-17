@@ -26,15 +26,15 @@
 		$nextparse = explode('/' , $next_url);
 		$tempparse = explode('?', $nextparse[4]);
 		$nexturl = $tempparse[0];
-		$link = "view.php?title=".$_GET["title"]."&wr_id=".$_GET['wr_id']."&ws_id=".$nexturl."";
-
 		break;
 	}
+	$link = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($next_url);
+	$link2 = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($_GET["ws_id"]);
 	if ( $next_url != null && strlen($next_url) > 0 ) {
-		echo "Y";
+		echo "Y|".$link;
 //		echo "{result='Y', link='".$link."'}";
 	} else {
-		echo "N";
+		echo "N|".$link2;
 //		echo "{result='N', link=''}";
 	}
 ?>

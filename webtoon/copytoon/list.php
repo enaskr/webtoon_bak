@@ -3,6 +3,8 @@
 	include($homepath.'lib/header.php');
 ?>
 <?php
+$reqTitle=$_GET["title"];
+
 $url = $siteUrl.str_replace("{toonid}",$_GET["wr_id"],$listUrl);
 echo "<script type='text/javascript'>console.log('$url');</script>";
 $get_html_contents = file_get_html($url);
@@ -48,7 +50,7 @@ echo "<script type='text/javascript'>console.log('THUMB=".$thumb."');</script>";
 <div id='container'>
 	<div class='item'>
 		<dl>
-			<dt><?php echo $title; ?></dt>
+			<dt><a href='<?php echo $url; ?>'><?php echo $reqTitle; ?></a></dt>
 			<dd>
 				<div class='group' style='padding:0px;'>
 					<table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0>
