@@ -2,6 +2,9 @@
 	include('../../lib/config.php');
 	include($homepath.'lib/header.php');
 	$epiurl = str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl);
+	$title = $_GET["title"];
+	$next_epi = "";
+	$referrer = $_SERVER['HTTP_REFERER'];
 
 	$get_images = array();
 	$url = $siteUrl.$epiurl; //주소셋팅
@@ -163,7 +166,7 @@
 	foreach($f->find('img') as $e){
 		$get_images = $e->src;
 		if ( startsWith($get_images, "http") == false ) $get_images = $siteUrl.$get_images;
-		echo "<img src='".$get_images."' width='100%'><br>";
+		echo "<img src='".$get_images."' style='max-width:100%'><br>";
 	}
 ?>
 					<tr style='background-color:#f8f8f8'>

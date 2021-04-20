@@ -2,6 +2,8 @@
 	include('../../lib/config.php');
 	include($homepath.'lib/header.php');
 	$epiurl = str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl);
+	$title = $_GET["title"];
+	$next_epi = "";
 	$referrer = $_SERVER['HTTP_REFERER'];
 
 	$get_images = array();
@@ -300,7 +302,7 @@
 			$images = str_replace(substr($images, 0,21), $siteUrl, $images);
 		}
 ?>
-						<?php echo "<img src='".$images."' width='100%'><br>"; ?>
+						<?php echo "<img src='".$images."' style='max-width:100%'><br>"; ?>
 <?php
 	}
 ?>

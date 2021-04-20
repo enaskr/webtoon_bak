@@ -2,6 +2,9 @@
 	include('../../lib/config.php');
 	include($homepath.'lib/header.php');
 	$epiurl = str_replace("{toonid}",$_GET["wr_id"], str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl));
+	$title = $_GET["title"];
+	$next_epi = "";
+	$referrer = $_SERVER['HTTP_REFERER'];
 
 	$get_images = array();
 	$url = $siteUrl.$epiurl; //주소셋팅
@@ -242,7 +245,7 @@
 	foreach($get_images as $images){
 		echo "<tr style='background-color:#f8f8f8'>";
 		echo "<td colspan='5' style='margin:0;padding:0;width:100%;font-size:16px;color:#8000ff;' align=center valign=middle>";
-		echo "<img src='".$images."' width='100%'></td></tr>";
+		echo "<img src='".$images."' style='max-width:100%'></td></tr>";
 	}
 ?>
 					<tr style='background-color:#f8f8f8'>

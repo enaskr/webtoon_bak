@@ -2,6 +2,9 @@
 	include('../../lib/config.php');
 	include($homepath.'lib/header.php');
 	$epiurl = str_replace("{toondtlid}",$_GET["ws_id"],$viewUrl);
+	$title = $_GET["title"];
+	$next_epi = "";
+	$referrer = $_SERVER['HTTP_REFERER'];
 
 	$get_images = array();
 	$url = $siteUrl.$epiurl; //주소셋팅
@@ -145,7 +148,7 @@
 		}
 </script>
 
-<div id="closeDiv1" style="display:none;top:5%;right:10px;position:absolute;" onClick="view('listView');"><img src="../lib/img/close.png" width="30" height="30"></div>
+<div id="closeDiv1" style="display:none;top:5%;right:10px;position:absolute;" onClick="view('listView');"><img src="../../lib/img/close.png" width="30" height="30"></div>
 <div id="prevDiv" style="display:none;top:10%;left:10px;height:80%;width:45%;position:absolute;" valign="middle" onClick="prev();"></div>
 <div id="nextDiv" style="display:none;top:10%;right:10px;height:80%;width:45%;position:absolute;" valign="middle" onClick="next();"></div>
 <div id="closeDiv2" style="display:none;top:90%;left:10px;height:10%;width:95%;position:absolute;" onClick="view('listView');"></div>
@@ -311,7 +314,7 @@
 		}
 		echo "<tr style='background-color:#f8f8f8'>";
 		echo "<td colspan='5' style='margin:0;padding:0;width:100%;font-size:16px;color:#8000ff;' align=center valign=middle>";
-		echo "<img src='".$images."' width='100%'></td></tr>";
+		echo "<img src='".$images."' style='max-width:100%'></td></tr>";
 	}
 ?>
 					<tr style='background-color:#f8f8f8'>

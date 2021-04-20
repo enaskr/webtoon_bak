@@ -4,6 +4,9 @@
 	$epiurl = $viewUrl."?".str_replace("{toondtlid}",$_GET["ws_id"],$viewParam);
 	$epiurl = str_replace("{toonid}",$_GET["wr_id"],$epiurl);
 	$epiurl = str_replace("{type}",$_GET["type"],$epiurl);
+	$title = $_GET["title"];
+	$next_epi = "";
+	$referrer = $_SERVER['HTTP_REFERER'];
 
 	$url = $siteUrl.$epiurl; //주소셋팅
 	echo "<script type='text/javascript'>console.log('$url');</script>";
@@ -137,7 +140,7 @@
 		foreach($f->find('img') as $g){
 			if($g->getAttribute("data-src") != null){
 				$get_images = $g->getAttribute("data-src");
-				echo "<img src='".$get_images."' width='100%'><br>";
+				echo "<img src='".$get_images."' style='max-width:100%'><br>";
 			}
 		}
 	}
