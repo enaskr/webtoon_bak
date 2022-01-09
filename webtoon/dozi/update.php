@@ -14,8 +14,8 @@
 	}
 
 	include('../../lib/config.php');
-	// 19올넷 (19ALLNET) / 19올넷웹툰 (19ALLNETW)
-	$target = "https://linkzip02.link/board_SnzU08/658";
+	// 도지코믹스 (DOZI)
+	$target = "https://linkzip02.link/webtoon/17498";
 	$get_html_contents = file_get_html($target);
 	for($html_c = 0; $html_c < $try_count; $html_c++){
 		if(strlen($get_html_contents) > 10000){
@@ -27,7 +27,7 @@
 	}
 
 	if ( strlen($get_html_contents) > 0 ) {
-		foreach($get_html_contents->find('div.document_658_452') as $e){
+		foreach($get_html_contents->find('div.document_17498_452') as $e){
 			$f = str_get_html($e->innertext);
 			foreach($f->find('u') as $g){
 				$newurl = $g->innertext;
@@ -36,9 +36,9 @@
 		}
 	}
 
-	if ( strlen($newurl) > 0 ) {
+	if ( strlen($newurl) > 10 ) {
 		if ( endsWith($newurl,"/") == true ) $newurl = substr($newurl, 0, strlen($newurl)-1);
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".$thisTime."', UPDATE_YN='Y' WHERE SITE_ID = '".$siteId."';");
+		$systemDB->exec("UPDATE 'SITE_INFO' SET SITE_URL = '".$newurl."', UPTDTIME = '".$thisTime."', UPDATE_YN='Y' WHERE SITE_ID = '".$siteId."';");
 ?>
 	<script type="text/javascript">
 		alert("주소를 성공적으로 업데이트했습니다.");
@@ -46,7 +46,7 @@
 	</script>
 <?php
 	} else {
-		$webtoonDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = '".$siteId."';");
+		$systemDB->exec("UPDATE 'SITE_INFO' SET UPTDTIME = '".date("Y.m.d H:i:s", time())."', UPDATE_YN='N' WHERE SITE_ID = '".$siteId."';");
 ?>
 	<script type="text/javascript">
 		alert("주소를 업데이트하지 못하였습니다.");

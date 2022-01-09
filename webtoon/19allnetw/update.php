@@ -16,7 +16,7 @@
 	include('../../lib/config.php');
 
 	//$target = "https://linktong1.com/bbs/board.php?bo_table=webtoon&wr_id=10";
-	$target = "https://linkzip.site/board_SnzU08/658";
+	$target = "https://linkzip02.link/board_SnzU08/658";
 	$get_html_contents = file_get_html($target);
 	for($html_c = 0; $html_c < $try_count; $html_c++){
 		if(strlen($get_html_contents) > 10000){

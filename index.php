@@ -1,5 +1,5 @@
 <?php
-	if(file_exists("./lib/config.php") && file_exists("./lib/webtoon.db")) {
+	if(file_exists("./lib/config.php") && file_exists("./lib/webtoon.db") && file_exists("./lib/system.db")) {
 	include('./lib/config.php');
 ?><!DOCTYPE html>
 <html lang='ko'>
@@ -31,14 +31,14 @@
 				<dd>
 <?php
 		$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH,  SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND UPDATE_YN='Y' AND MAIN_VIEW='Y' ORDER BY SITE_TYPE DESC, CAST(ORDER_NUM AS INT), SITE_NAME ASC;";
-		$site_result = $webtoonDB->query($getSiteSQL);
+		$site_result = $systemDB->query($getSiteSQL);
 		while($siteDB = $site_result->fetchArray(SQLITE3_ASSOC)){
 			$getSiteId = $siteDB['SITE_ID'];
 			$getSiteName = $siteDB['SITE_NAME'];
 			$getServerPath = $siteDB['SERVER_PATH'];
 			$getSiteType = $siteDB['SITE_TYPE'];
 ?>
-					<a href="./<?php echo $getSiteType."/".$getServerPath; ?>/myview.php" target="_top" style="padding:20px 10px 20px 20px;"><?php echo $getSiteName; ?></a>
+					<a href="./<?php echo $getSiteType."/".$getServerPath; ?>/myview.php" target="_top" style="padding:20px 10px 20px 20px;">[<?php echo $getSiteType ?>]<?php echo $getSiteName; ?></a>
 <?php
 		}
 ?>
@@ -48,7 +48,6 @@
 				<dd>
 					<a href="#" style="padding:5px 10px 5px 20px;"></a>
 					<a href="ranking/naver.php" style="padding:20px 10px 20px 20px;">NAVER 웹툰 순위</a>
-					<a href="ranking/daum.php" style="padding:20px 10px 20px 20px;">DAUM 웹툰 순위</a>
 					<a href="./url.php" style="padding:20px 10px 20px 20px;">웹툰사이트 링크</a>
 					<a href="./user/index.php" style="padding:20px 10px 20px 20px;">설정</a>
 					<a href="#" style="padding:5px 10px 5px 20px;"></a>

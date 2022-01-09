@@ -36,7 +36,7 @@
 						</tr>
 <?php
 		$toonsiteList = "SELECT SITE_ID, SITE_NAME, SITE_TYPE, SERVER_PATH, MAIN_VIEW, UPDATE_YN, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE, UPTDTIME FROM SITE_INFO ORDER BY SITE_TYPE DESC, SITE_NAME ASC; ";
-		$webtoonView = $webtoonDB->query($toonsiteList);
+		$webtoonView = $systemDB->query($toonsiteList);
 		while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 			$dbsiteid = $row["SITE_ID"];
 			$dbsitename = $row["SITE_NAME"];

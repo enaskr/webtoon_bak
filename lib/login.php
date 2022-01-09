@@ -3,14 +3,25 @@
 	$userid = $_POST["user"];
 	$userpw = $_POST["pass"];
 	$loginDuration = 60;
-	$webtoonDB = new SQLite3('./webtoon.db');
-	if($webtoonDB->lastErrorCode() == 0){
-		$conf_result = $webtoonDB->query("SELECT CONF_VALUE FROM SERVER_CONFIG WHERE CONF_NAME='login_duration';");
+	$systemDB = new SQLite3('./system.db');
+	if($systemDB->lastErrorCode() == 0){
+		$conf_result = $systemDB->query("SELECT CONF_VALUE FROM SERVER_CONFIG WHERE CONF_NAME='login_duration';");
 		while($config = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			$loginDuration = (int)$config["CONF_VALUE"];
 		}
 		$loginDuration = $loginDuration * 60;
+	} else {
+?>
+<script type="text/javascript">
+	alert("System DB연결시 오류가 발생했습니다.");
+	window.history.back();
+</script>
+<?php
+		echo $systemDB->lastErrorMsg();
+	}
 
+	$webtoonDB = new SQLite3('./webtoon.db');
+	if($webtoonDB->lastErrorCode() == 0){
 		if ( $userid !=null && strlen($userid) > 3 && $userpw !=null && strlen($userpw) > 3 ) {
 			$userpassword = strtoupper(hash("sha256", $userpw));
 			$result = $webtoonDB->query("SELECT MBR_NO, USER_ID, LOGIN_COUNT, USER_NAME, EMAIL, PHONE, REGDTIME FROM USER_INFO WHERE USER_ID = '".$userid."' AND USER_PASSWD = '".$userpassword."' AND USER_STATUS IN ('OK','APPROVED') AND USE_YN='Y' LIMIT 1;");

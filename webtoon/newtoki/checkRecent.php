@@ -18,14 +18,17 @@
 	}
 	curl_close ($ch); // curl Á¾·á
 	$get_html_contents = str_get_html($result);
+	$next_url = "";
 
+	//echo $get_html_contents;
+	// https://newtoki95.com/webtoon/13059818?toon=%EC%9D%BC%EB%B0%98%EC%9B%B9%ED%88%B0
 	foreach($get_html_contents->find('a#goNextBtn') as $e){
 		$next_url = $e->href;
 		$next_url = str_replace("#next","",$next_url);
 
 		$nextparse = explode('/' , $next_url);
 		$tempparse = explode('?', $nextparse[4]);
-		$nexturl = $tempparse[0];
+		$next_url = $tempparse[0];
 		break;
 	}
 	$link = "view.php?title=".urlencode($_GET["title"])."&wr_id=".urlencode($_GET["wr_id"])."&ws_id=".urlencode($next_url);

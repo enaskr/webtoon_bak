@@ -10,19 +10,21 @@
 		}
 	} else {
 		if ( $_POST["uptMode"] == "PWD" ) {
-			$userPass = "SELECT MBR_NO, USER_ID, USER_PASSWD, USER_NAME, EMAIL, PHONE, USER_LEVEL, USER_STATUS, REGDTIME, UPTDTIME FROM USER_INFO WHERE USER_ID = '".$userID."' AND USER_PASSWD = '".strtoupper(hash("sha256", $_POST["userpassword"]))."'; ";
+			$userPass = "SELECT MBR_NO, USER_ID, USER_PASSWD FROM USER_INFO WHERE USER_ID = '".$USER_ID."' AND USER_PASSWD = '".strtoupper(hash("sha256", $_POST["userpassword"]))."'; ";
+			echo $userPass;
 			$passView = $webtoonDB->query($userPass);
 			while($row = $passView->fetchArray(SQLITE3_ASSOC)){
 				$selUserid = $row["USER_ID"];
 				$selPasswd = $row["USER_PASSWD"];
+				echo "USER_ID=".$selUserid."<br>";
 			}
 			if ( $selUserid == null || strlen($selUserid) == 0 ) {
 				$isSuccess = false;
 			} else {
-				$userList = "UPDATE USER_INFO SET USER_PASSWD='".strtoupper(hash("sha256", $_POST["newuserpassword"]))."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$userID."'  AND USER_PASSWD = '".strtoupper(hash("sha256", $_POST["userpassword"]))."'; ";
+				$userList = "UPDATE USER_INFO SET USER_PASSWD='".strtoupper(hash("sha256", $_POST["newuserpassword"]))."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$USER_ID."'  AND USER_PASSWD = '".strtoupper(hash("sha256", $_POST["userpassword"]))."'; ";
 			}
 		} else {
-			$userList = "UPDATE USER_INFO SET EMAIL='".$_POST["useremail"]."', PHONE='".$_POST["userphone"]."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$userID."'; ";
+			$userList = "UPDATE USER_INFO SET EMAIL='".$_POST["useremail"]."', PHONE='".$_POST["userphone"]."', UPTDTIME='".date("YmdHis", time())."' WHERE USER_ID = '".$USER_ID."'; ";
 		}
 	}
 		if ( $isSuccess ) {
@@ -46,7 +48,7 @@
 ?>
 <script type="text/javascript">
 	alert("이전 비밀번호가 다릅니다. 다시 입력해주세요.");
-	window.history.back();
+window.history.back();
 </script>
 <?php
 		}

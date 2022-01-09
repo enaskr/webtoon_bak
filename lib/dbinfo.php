@@ -65,6 +65,13 @@
 		INSERT INTO SITE_INFO VALUES('19ALLNET','19올넷','19ALLNET','https://www.allall43.net','manga','19allnet','1','/search','skeyword={keyword}','/cartoonpublish','','/cartooncompletion','','/cartoonpublish/weblist/{toonid}/page/{page}','','/cartoonpublish/view/{toonid}/{toondtlid}','','https://linkzip.site/board_SnzU08/658','N',99999,'Y','2020.11.09 00:00:00','2021.02.06 15:59:05','Y');
 		INSERT INTO SITE_INFO VALUES('19ALLNETW','19올넷','19ALLNETW','https://www.allall43.net','webtoon','19allnetw','1','/search','skeyword={keyword}','/publish','','/completion','','/publish/weblist/{toonid}/page/{page}','','/publish/view/{toonid}/{toondtlid}','','https://linkzip.site/board_SnzU08/658','N','99999','Y','2020.11.09 00:00:00','2021.02.06 15:59:05','Y');
 
+		INSERT INTO SITE_INFO VALUES('DOZI','도지코믹스','DOZI','https://dozi027.com','webtoon','dozi','1','/bbs/search.php','stx={keyword}','/bbs/board.php','bo_table=webtoon','/bbs/board.php','bo_table=webtoon_end','/bbs/board.php','bo_table=webtoon&wr_id={toonid}','/bbs/board.php','bo_table=webtoon&wr_id={toondtlid}','https://twitter.com/manycomics77','N',99999,'Y','2020.11.09 00:00:00','2021.02.06 15:59:09','Y','Y');
+
+
+		INSERT INTO SITE_INFO VALUES('JAMICS','재믹스','JAMICS','https://jamics.work','webtoon','jamics','1','/bbs/search.php','sfl=wr_subject||wr_content&stx={keyword}','/무료웹툰','fil=최신','/웹툰/완결','fil=최신','/{toonid}','','/{toondtlid}','','https://korsite3.com','Y','99999','Y','2020.11.09 00:00:00','2021.02.06 15:59:03','Y','Y');
+
+		INSERT INTO SITE_INFO VALUES('MARU','마루마루','MARU','https://marumaru216.com','manga','maru','1','/bbs/search.php','url=%2Fbbs%2Fsearch.php&stx={keyword}','/bbs/update','','/bbs/update','','/bbs/cmoic/{toonid}','','/bbs/cmoic/{toonid}/{toondtlid}','','https://jusoshow.me','Y','99999','Y','2021.10.09 00:00:00','2021.10.09 15:59:03','Y','Y');
+
 		ALTER TABLE SITE_INFO ADD COLUMN UPDATE_EXECUTE;
 
 

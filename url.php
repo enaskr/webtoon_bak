@@ -1,6 +1,6 @@
 <?php
 	header('Content-Type: text/html; charset=UTF-8');
-	$webtoonDB = new SQLite3('./lib/webtoon.db');
+	$webtoonDB = new SQLite3('./lib/system.db');
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -47,7 +47,7 @@ else {
 			<dd>
 <?php
 		$uptdtime = "";
-		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, UPTDTIME FROM SITE_INFO WHERE SITE_TYPE='webtoon' AND USE_LEVEL < 99999 AND USE_YN='Y';";
+		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, UPTDTIME FROM SITE_INFO WHERE SITE_TYPE='webtoon' AND USE_LEVEL < 99999 AND USE_YN='Y' ORDER BY SITE_TYPE DESC, CAST(ORDER_NUM AS INT), SITE_NAME ASC;";
 		$conf_result = $webtoonDB->query($sql);
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			echo "<a href='".$conf["SITE_URL"]."' target='_top'>".$conf["SITE_NAME"]."<span style='font-size:20px;'><br>[".$conf["SITE_URL"]."]</span></a>";
@@ -58,7 +58,7 @@ else {
 			<dt>만화책</dt>
 			<dd>
 <?php
-		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, UPTDTIME FROM SITE_INFO WHERE SITE_TYPE='manga' AND USE_LEVEL < 99999 AND USE_YN='Y';";
+		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, UPTDTIME FROM SITE_INFO WHERE SITE_TYPE='manga' AND USE_LEVEL < 99999 AND USE_YN='Y' ORDER BY SITE_TYPE DESC, CAST(ORDER_NUM AS INT), SITE_NAME ASC;";
 		$conf_result = $webtoonDB->query($sql);
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			echo "<a href='".$conf["SITE_URL"]."' target='_top'>".$conf["SITE_NAME"]."<span style='font-size:20px;'><br>[".$conf["SITE_URL"]."]</span></a>";

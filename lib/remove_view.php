@@ -3,8 +3,12 @@
 
 	$siteid = $_GET["siteid"];
 	$toonid = $_GET["toonid"];
-	$epiid = $_GET["epiid"];
+	$epiid = "";
+	if (isset($_GET['epiid']) ) { 
+		$epiid = $_GET['epiid'];  
+	}
 	$deleteCnt = 0;
+	$cnt = 0;
 
 	if ( $epiid != null && strlen($epiid) > 0 ) {
 		$sql_view = "DELETE FROM 'USER_VIEW_DTL' WHERE MBR_NO='".$MBR_NO."' AND SITE_ID='".$siteid."' AND TOON_ID='".$toonid."' AND VIEW_ID='".$epiid."';";

@@ -13,9 +13,10 @@
 	$USER_LEVEL = 0;
 	$USER_ID = "";
 
-	$webtoonDB = new SQLite3($homepath.'lib/webtoon.db');
-	if($webtoonDB->lastErrorCode() == 0){
-		$conf_result = $webtoonDB->query("SELECT CONF_NAME, CONF_VALUE, CONF_ADD1, CONF_ADD2, REGDTIME FROM SERVER_CONFIG;");
+
+	$systemDB = new SQLite3($homepath.'lib/system.db');
+	if($systemDB->lastErrorCode() == 0){
+		$conf_result = $systemDB->query("SELECT CONF_NAME, CONF_VALUE, CONF_ADD1, CONF_ADD2, REGDTIME FROM SERVER_CONFIG;");
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			$config[$conf["CONF_NAME"]] = $conf['CONF_VALUE'];
 			$config_add1[$conf["CONF_NAME"]] = $conf['CONF_ADD1'];
@@ -26,7 +27,7 @@
 //		$config["view_adult"] / $config["max_list"] / $config["try_count"] / $config["login_view"] / $config["search_seq"] / $config["login_duration"]
 
 		$sql = "SELECT SITE_ID, SITE_NAME, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, MAIN_VIEW, ORDER_NUM, UPDATE_YN FROM SITE_INFO WHERE SERVER_PATH = '".$lastpath."' AND USE_YN='Y' LIMIT 1;";
-		$conf_result = $webtoonDB->query($sql);
+		$conf_result = $systemDB->query($sql);
 		$useLevel = 0;
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			$siteId = $conf["SITE_ID"];
@@ -55,6 +56,14 @@
 			$orderNum = $conf["ORDER_NUM"];
 			$updateYn = $conf["UPDATE_YN"];
 		}
+
+	} else {
+		echo "System Database connection failed";
+		echo $systemDB->lastErrorMsg();
+	}
+
+	$webtoonDB = new SQLite3($homepath.'lib/webtoon.db');
+	if($webtoonDB->lastErrorCode() == 0){
 
 		if ( $cookieMBRID != null && strlen($cookieMBRID) > 0 ) {
 			define('KEY', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890');

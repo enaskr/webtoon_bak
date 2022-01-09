@@ -29,7 +29,7 @@
 		$toonsiteList = "SELECT SITE_ID, SITE_NAME, SITE_ALIAS, SITE_URL, SITE_TYPE, SERVER_PATH, USE_LEVEL, SEARCH_URL, SEARCH_PARAM, RECENT_URL, RECENT_PARAM, ";
 		$toonsiteList = $toonsiteList."ENDED_URL, ENDED_PARAM, LIST_URL, LIST_PARAM, VIEW_URL, VIEW_PARAM, USE_YN, NOTE, MAIN_VIEW, ORDER_NUM, UPDATE_YN, IFNULL(UPDATE_EXECUTE,'Y') AS UPDATE_EXECUTE, REGDTIME, UPTDTIME ";
 		$toonsiteList = $toonsiteList."FROM SITE_INFO WHERE SITE_ID='".$_GET["siteid"]."' LIMIT 1; ";
-		$webtoonView = $webtoonDB->query($toonsiteList);
+		$webtoonView = $systemDB->query($toonsiteList);
 		while($row = $webtoonView->fetchArray(SQLITE3_ASSOC)){
 			$dbsite_id = $row["SITE_ID"];
 			$dbsite_name = $row["SITE_NAME"];

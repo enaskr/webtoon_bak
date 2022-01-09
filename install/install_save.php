@@ -4,7 +4,6 @@
     header("Cache-Control: post-check=0, pre-check=0", false);
     header("Pragma: no-cache");
     header("Connection: close");
-	header('Content-Type: text/html; charset=UTF-8');
 
 	$SERVER_PATH = $_POST['server_path'];
 	$HTTP_PATH = $_POST['http_path'];
@@ -15,7 +14,6 @@
 	$filecont = $filecont."\t"."header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT+9'); \n";
 	$filecont = $filecont."\t"."header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0'); \n";
 	$filecont = $filecont."\t"."header('Cache-Control: post-check=0, pre-check=0', false); \n";
-	$filecont = $filecont."\t"."header('Content-Type: text/html; charset=UTF-8'); \n";
 	$filecont = $filecont."\t"."header('Pragma: no-cache'); \n";
 	$filecont = $filecont."\t"."header('Connection: close'); \n";
 	$filecont = $filecont."\t$"."keywordstr = ''; \n";

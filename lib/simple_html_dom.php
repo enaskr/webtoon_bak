@@ -74,10 +74,16 @@ function file_get_html(
 	 * For sourceforge users: uncomment the next line and comment the
 	 * retrieve_url_contents line 2 lines down if it is not already done.
 	 */
+	$context=array(
+		"ssl"=>array(
+			"verify_peer"=>false,
+			"verify_peer_name"=>false,
+		)
+	); 
 	$contents = file_get_contents(
 		$url,
 		$use_include_path,
-		$context,
+		stream_context_create($context),
 		$offset,
 		$maxLen
 	);
@@ -2427,6 +2433,7 @@ function get_http_header_as_array($rawheader){
 }
 
 function getCurlDom($url, $try_cnt){
+	try{
 	$ch = curl_init(); //curl 로딩
 	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
@@ -2442,6 +2449,9 @@ function getCurlDom($url, $try_cnt){
 	}
 	curl_close ($ch); // curl 종료
 	$get_html_contents = str_get_html($result);
+	} catch(Exception $e) {
+		$get_html_contents = $e->getMessage() . ' (-오류코드-:' . $e->getCode() . ')';
+	}
 	return $get_html_contents;
 }
 
@@ -2450,6 +2460,7 @@ function getCurl($url, $try_cnt){
 	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
 	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36');
+	curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
 	curl_setopt($ch, CURLOPT_TIMEOUT,3000);
 	$result = curl_exec($ch); // curl 실행 및 결과값 저장
 	for($html_c = 0; $html_c < (int)$try_cnt; $html_c++){
@@ -2461,6 +2472,36 @@ function getCurl($url, $try_cnt){
 	}
 	curl_close ($ch); // curl 종료
 	return $result;
+}
+
+function getImage($url, $imgname, $try_cnt){
+	$fp = fopen ("/share/webtoon/tmp/".$imgname, 'w+');
+	$ch = curl_init(); //curl 로딩
+	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음
+	curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36');
+	curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+	curl_setopt($ch, CURLOPT_TIMEOUT,3000);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+		'cf-bgj: imgq:100,h2pri',
+		'cf-cache-status: HIT',
+		'cf-polished: origSize=349359',
+		'cf-ray: 69b81680fa9a0abe-KIX',
+		'date: Sat, 09 Oct 2021 13:52:10 GMT',
+		'etag: "61611eea-554af"',
+		'expect-ct: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"'
+	));
+	$result = curl_exec($ch); // curl 실행 및 결과값 저장
+	for($html_c = 0; $html_c < (int)$try_cnt; $html_c++){
+		if(strlen($result) > 10000){
+			break;
+		} else {
+			$result = curl_exec($ch);
+		}
+	}
+	curl_close ($ch); // curl 종료
+	fclose($fp);
+	return "/tmp/".$imgname;
 }
 
 function CheckSubstrs($substrs,$text){ 

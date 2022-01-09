@@ -80,7 +80,7 @@ foreach($get_html_contents->find('li.list-item') as $e){
 
 } catch(Exception $e) {
 	$s = $e->getMessage() . ' (오류코드:' . $e->getCode() . ')';
-	echo $s;
+	echo '<dd><div class="group" style="padding:0px;"><table style="line-height:1.5;border-color:#ffffff;" border=1 width="100%" cellspacing=0 cellpadding=0><tr style="background-color:#f8f8f8"><td style="width:100%;font-size:16px;color:#8000ff;" align=center valign=middle>'.$s.'</td></tr>';
 }
 ?>
 						</table>

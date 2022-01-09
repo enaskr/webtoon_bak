@@ -125,8 +125,8 @@
 </span></span>
 <span id="webtoon"><span style="background:#8f7ee5;padding:5px 5px 5px 5px;box-sizing:border-box;border-radius:10px;margin:0px 0px 0px 0px"><a href="javascript:void(0);" onClick="toggle('webtoon');" style="font-weight:900;color:#ffff00;word-break:keep-all;">웹툰</a></span><span id="webtoonlist" style="display:none;padding:5px 5px 5px 5px;margin:5px 0px 5px 0px;">
 <?php
-		$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='webtoon' AND UPDATE_YN='Y' ORDER BY SITE_NAME ASC;";
-		$site_result = $webtoonDB->query($getSiteSQL);
+		$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='webtoon' AND UPDATE_YN='Y' ORDER BY SITE_TYPE DESC, CAST(ORDER_NUM AS INT), SITE_NAME ASC;";
+		$site_result = $systemDB->query($getSiteSQL);
 		while($siteDB = $site_result->fetchArray(SQLITE3_ASSOC)){
 			$getSiteId = $siteDB['SITE_ID'];
 			$getSiteName = $siteDB['SITE_NAME'];
@@ -139,8 +139,8 @@
 ?></span></span>
 <span id="manga"><span style="background:#8f7ee5;padding:5px 5px 5px 5px;box-sizing:border-box;border-radius:10px;margin:0px 0px 0px 0px"><a href='javascript:void(0);' onClick='toggle("manga");' style="font-weight:900;color:#ffff00;word-break:keep-all;">만화책</a></span><span id="mangalist" style="display:none;padding:5px 5px 5px 5px;margin:5px 0px 5px 0px;">
 <?php
-	$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='manga' AND UPDATE_YN='Y' ORDER BY SITE_NAME ASC;";
-	$site_result = $webtoonDB->query($getSiteSQL);
+	$getSiteSQL = "SELECT SITE_ID, SITE_NAME, SERVER_PATH, SITE_TYPE  FROM SITE_INFO WHERE CAST(USE_LEVEL AS INT) <= ".$USER_LEVEL." AND USE_YN='Y' AND SITE_TYPE='manga' AND UPDATE_YN='Y' ORDER BY SITE_TYPE DESC, CAST(ORDER_NUM AS INT), SITE_NAME ASC;";
+	$site_result = $systemDB->query($getSiteSQL);
 	while($siteDB = $site_result->fetchArray(SQLITE3_ASSOC)){
 		$getSiteId = $siteDB['SITE_ID'];
 		$getSiteName = $siteDB['SITE_NAME'];
@@ -154,8 +154,6 @@
 <span id="ranking"><span style="background:#8f7ee5;padding:5px 5px 5px 5px;box-sizing:border-box;border-radius:10px;margin:0px 0px 0px 0px"><a href='javascript:void(0);' onClick='toggle("ranking");' style="font-weight:900;color:#ffff00;word-break:keep-all;">웹툰순위</a></span><span id="rankinglist" style="display:none;padding:5px 5px 5px 5px;margin:5px 0px 5px 0px;">
 	<span style="background:#fff;border:solid 1px blue;padding:3px 2px 2px 3px;box-sizing:border-box;border-radius:5px;margin:0px 0px 0px 0px"><a href='<?php echo $homeurl; ?>ranking/naver.php' <?php if ( $filepath == "naver.php" ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>NAVER 일간</a></span>
 	<span style="background:#fff;border:solid 1px blue;padding:3px 2px 2px 3px;box-sizing:border-box;border-radius:5px;margin:0px 0px 0px 0px"><a href='<?php echo $homeurl; ?>ranking/naverweek.php' <?php if ( $filepath == "naverweek.php" ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>NAVER 주간</a></span>
-	<span style="background:#fff;border:solid 1px blue;padding:3px 2px 2px 3px;box-sizing:border-box;border-radius:5px;margin:0px 0px 0px 0px"><a href='<?php echo $homeurl; ?>ranking/daum.php' <?php if ( $filepath == "daum.php" ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>DAUM 일간</a></span>
-	<span style="background:#fff;border:solid 1px blue;padding:3px 2px 2px 3px;box-sizing:border-box;border-radius:5px;margin:0px 0px 0px 0px"><a href='<?php echo $homeurl; ?>ranking/daumweek.php' <?php if ( $filepath == "daumweek.php" ) { ?>style='font-weight:bold;color:blue;'<?php } ?>>DAUM 주간</a></span>
 </span></span>
 </font></div>
 <?php

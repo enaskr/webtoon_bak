@@ -4,6 +4,11 @@
 
 	$get_images = array();
 	$url = $siteUrl.$epiurl; //주소셋팅
+	if ( $config["cf_redirect"] != null && $config["cf_redirect"] == "Y" ) {
+		$url = $config_add1["cf_redirect"]."?try_count=".$config["try_count"]."&cf_cookie=".urlencode($config["cf_cookie"])."&cf_useragent=".urlencode($config["cf_useragent"])."&target_url=".urlencode($url);
+	}
+	echo "<script type='text/javascript'>console.log('$url');</script>";
+	echo "<script type='text/javascript'>console.log('THUMB=".$_COOKIE["THUMB"]."');</script>";
 	$ch = curl_init(); //curl 로딩
 	curl_setopt($ch, CURLOPT_URL,$url); //curl에 url 셋팅
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); // 이 셋팅은 1로 고정하는 것이 정신건강에 좋음

@@ -2,14 +2,14 @@
 	include('../lib/config.php');
 	if ( $USER_LEVEL >= 99999 ) {
 		$conf_sql = "SELECT SITE_ID, SITE_NAME, SERVER_PATH FROM SITE_INFO WHERE SITE_ID='".$_POST["SITE_ID"]."';";
-		$conf_result = $webtoonDB->query($conf_sql);
+		$conf_result = $systemDB->query($conf_sql);
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			$toonsiteid = $conf["SITE_ID"];
 			$toonsitename = $conf["SITE_NAME"];
 			$pathname = $conf["SERVER_PATH"];
 			if ( strlen($_POST["SERVER_PATH"]) == 0 ) {
 				$userList = "UPDATE SITE_INFO SET USE_YN='N', UPTDTIME='".date("Y.m.d H:i:s", time())."' WHERE SITE_ID='".$_POST["SITE_ID"]."' AND USE_YN='N' ; ";
-				$webtoonDB->exec($userList)
+				$systemDB->exec($userList)
 ?>
 <script type="text/javascript">
 	alert("사이트 정보를 정상적으로 삭제하였습니다.");
@@ -27,9 +27,9 @@
 				$userList = $userList." ORDER_NUM='".$_POST["ORDER_NUM"]."', UPDATE_YN='".$_POST["UPDATE_YN"]."', UPDATE_EXECUTE='".$_POST["UPDATE_EXECUTE"]."', UPTDTIME='".date("Y.m.d H:i:s", time())."' ";
 				$userList = $userList." WHERE SITE_ID = '".$_POST["SITE_ID"]."' ; ";
 				//echo "SQL=".$userList;
-				$query = $webtoonDB->exec($userList);
+				$query = $systemDB->exec($userList);
 				if ( $query ) {
-				if ( $webtoonDB->changes() > 0 ) {
+				if ( $systemDB->changes() > 0 ) {
 ?>
 <script type="text/javascript">
 	window.history.back();

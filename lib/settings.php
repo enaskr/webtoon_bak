@@ -36,7 +36,7 @@
 							<td align="center" style='font-size:15px;color:#000000;width:50%;'>설정명</td><td align="center" style='font-size:15px;color:#000000;width:50%;'>설정값</td>
 						</tr>
 <?php
-		$conf_result = $webtoonDB->query("SELECT CONF_NAME, CONF_VALUE, CONF_ADD1, CONF_ADD2, REGDTIME FROM SERVER_CONFIG;");
+		$conf_result = $systemDB->query("SELECT CONF_NAME, CONF_VALUE, CONF_ADD1, CONF_ADD2, REGDTIME FROM SERVER_CONFIG;");
 		while($conf = $conf_result->fetchArray(SQLITE3_ASSOC)){
 			echo "<tr style='background-color:#f8f8f8'>\n";
 			echo "<form method='post'><input type='hidden' name='CONF_NAME' value='".$conf["CONF_NAME"]."'>";
